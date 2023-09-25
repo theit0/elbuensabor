@@ -1,29 +1,30 @@
 package elbuensabor.entities;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.io.Serializable;
+
 import java.util.Date;
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "domicilio")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Cliente extends Base {
-    @Column(name = "nombre")
-    private String nombre;
-    @Column(name = "apellido")
-    private String apellido;
-    @Column(name = "email")
-    private String email;
-    @Column(name = "telefono")
-    private String telefono;
+public class Domicilio extends Base{
+    @Column(name = "calle")
+    private String calle;
+    @Column(name = "codPostal")
+    private int codPostal;
+    @Column(name = "localidad")
+    private String localidad;
+    @Column(name = "numero")
+    private int numero;
+    @Column(name = "pisoDepto")
+    private int pisoDepto;
     @Column(name = "fechaAlta")
     private Date fechaAlta;
     @Column(name = "fechaBaja")
@@ -31,8 +32,7 @@ public class Cliente extends Base {
     @Column(name = "fechaModificacion")
     private Date fechaModificacion;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_usuario")
-    private Usuario usuario;
-
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "fk_cliente")
+    private Cliente cliente;
 }

@@ -52,12 +52,12 @@ public class Pedido extends Base{
     @Enumerated(EnumType.STRING)
     private FormaPago formaPago;
 
-    @ManyToOne()
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_domicilio_entrega")
     private Domicilio domicilioEntrega;
 
     @NotNull
-    @ManyToOne()
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 

@@ -56,7 +56,7 @@ public class Factura extends Base{
     private Date fechaBaja;
 
     @NotNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_pedido")
     private Pedido pedido;
 }

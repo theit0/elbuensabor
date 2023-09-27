@@ -35,7 +35,7 @@ public class DetallePedido extends Base{
     private ArticuloManufacturado articuloManufacturado;
 
     @NotNull
-    @ManyToOne()
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_pedido")
     private Pedido pedido;
 

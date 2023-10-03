@@ -5,6 +5,7 @@ import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
 @Table(name = "Articulo_Manufacturado")
@@ -36,7 +37,7 @@ public class ArticuloManufacturado extends Base{
     private String urlImagen;
     @Column(name = "fechaAlta")
 
-    private Date fechaAlta;
+    private LocalDateTime fechaAlta;
     @Column(name = "fechaBaja")
 
     private Date fechaBaja;

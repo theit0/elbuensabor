@@ -22,6 +22,8 @@ repositories {
 }
 
 dependencies {
+	// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version:'2.1.0'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -36,4 +38,9 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+jar {
+	manifest {
+		attributes 'ElbuensaborApplication': 'elbuensabor' // Reemplaza 'tu.paquete.MainClass' con la clase principal de tu aplicación
+	}
 }

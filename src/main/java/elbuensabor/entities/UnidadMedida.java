@@ -2,22 +2,27 @@ package elbuensabor.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "Unidad_Medida")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
-public class Usuario extends Base{
-    @Column(name = "asusername")
-    private String asusername;
-    @Column(name = "auth0_id")
-    private int auth0_id;
+public class UnidadMedida extends Base{
+
+    @NotNull
+    @Column(length = 255)
+    private String denominacion;
+
+    @NotNull
+    @Column(length = 25)
+    private String abreviatura;
     @Column(name = "fechaAlta")
 
     private LocalDateTime fechaAlta;
@@ -27,4 +32,6 @@ public class Usuario extends Base{
     @Column(name = "fechaModificacion")
 
     private Date fechaModificacion;
+
+
 }

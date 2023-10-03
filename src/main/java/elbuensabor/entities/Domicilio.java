@@ -1,11 +1,9 @@
 package elbuensabor.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -14,6 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Domicilio extends Base{
     @Column(name = "calle")
     private String calle;
@@ -26,13 +25,16 @@ public class Domicilio extends Base{
     @Column(name = "pisoDepto")
     private int pisoDepto;
     @Column(name = "fechaAlta")
-    private Date fechaAlta;
+
+    private LocalDateTime fechaAlta;
     @Column(name = "fechaBaja")
+
     private Date fechaBaja;
     @Column(name = "fechaModificacion")
+
     private Date fechaModificacion;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_cliente")
     private Cliente cliente;
 }

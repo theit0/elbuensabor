@@ -44,6 +44,10 @@ public class ArticuloManufacturado extends Base{
     @Column(name = "fechaModificacion")
 
     private Date fechaModificacion;
+    @NotNull
+    @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_rubro_articulo")
+    private RubroArticulo rubroArticulo;
 
 
 }

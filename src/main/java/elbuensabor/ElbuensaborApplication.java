@@ -55,6 +55,16 @@ public class ElbuensaborApplication {
 					.fechaAlta(LocalDateTime.now())
 					.build();
 			unidadMedidaRepository.save(mililitros);
+			RubroArticulo ComidaRapida = RubroArticulo.builder()
+					.denominacion("Comida Rapida")
+					.fechaAlta(LocalDateTime.now())
+					.build();
+			rubroArticuloRepository.save(ComidaRapida);
+			RubroArticulo ComidaSana = RubroArticulo.builder()
+					.denominacion("Comida Sana")
+					.fechaAlta(LocalDateTime.now())
+					.build();
+			rubroArticuloRepository.save(ComidaSana);
 			RubroArticulo bebidas = RubroArticulo.builder()
 					.denominacion("bebidas")
 					.fechaAlta(LocalDateTime.now())
@@ -125,6 +135,7 @@ public class ElbuensaborApplication {
 					.precioVenta(new BigDecimal(2000))
 					.tiempoEstimadoCocina(50)
 					.urlImagen("https://i.ibb.co/Srv0rhf/pngwing-com-5-1.png")
+					.rubroArticulo(ComidaRapida)
 					.build();
 			articuloManufacturadoRepository.save(Hamburguesa);
 			ArticuloManufacturado Taco = ArticuloManufacturado.builder()
@@ -135,6 +146,7 @@ public class ElbuensaborApplication {
 					.precioVenta(new BigDecimal(1000))
 					.tiempoEstimadoCocina(30)
 					.urlImagen("https://i.ibb.co/grXmj7F/pngwing-com-7-1.png")
+					.rubroArticulo(ComidaSana)
 					.build();
 
 			articuloManufacturadoRepository.save(Taco);
@@ -146,6 +158,7 @@ public class ElbuensaborApplication {
 					.precioVenta(new BigDecimal(2000))
 					.tiempoEstimadoCocina(40)
 					.urlImagen("https://i.ibb.co/gSjM1PY/pngwing-com-6-1.png")
+					.rubroArticulo(ComidaSana)
 					.build();
 			articuloManufacturadoRepository.save(Lomo);
 			ArticuloManufacturado PizzaMuzza = ArticuloManufacturado.builder()
@@ -156,6 +169,7 @@ public class ElbuensaborApplication {
 					.precioVenta(new BigDecimal(1500))
 					.tiempoEstimadoCocina(10)
 					.urlImagen("https://i.ibb.co/rc88348/pngwing-com-8-1.png")
+					.rubroArticulo(ComidaRapida)
 					.build();
 			articuloManufacturadoRepository.save(PizzaMuzza);
 			ArticuloManufacturado PizzaEspe = ArticuloManufacturado.builder()
@@ -166,6 +180,7 @@ public class ElbuensaborApplication {
 					.precioVenta(new BigDecimal(1500))
 					.tiempoEstimadoCocina(10)
 					.urlImagen("https://i.ibb.co/ZG3YR0k/pngwing-com-9-1.png")
+					.rubroArticulo(ComidaRapida)
 					.build();
 			articuloManufacturadoRepository.save(PizzaEspe);
 			ArticuloManufacturado EmpanadasCarne = ArticuloManufacturado.builder()
@@ -176,6 +191,7 @@ public class ElbuensaborApplication {
 					.precioVenta(new BigDecimal(1600))
 					.tiempoEstimadoCocina(20)
 					.urlImagen("https://i.ibb.co/ZgL0xZg/pngwing-com-10-1.png")
+					.rubroArticulo(ComidaRapida)
 					.build();
 			articuloManufacturadoRepository.save(EmpanadasCarne);
 			ArticuloManufacturado EmpanadasJamon = ArticuloManufacturado.builder()
@@ -186,6 +202,7 @@ public class ElbuensaborApplication {
 					.precioVenta(new BigDecimal(1600))
 					.tiempoEstimadoCocina(15)
 					.urlImagen("https://i.ibb.co/ZgL0xZg/pngwing-com-10-1.png")
+					.rubroArticulo(ComidaRapida)
 					.build();
 			articuloManufacturadoRepository.save(EmpanadasJamon);
 

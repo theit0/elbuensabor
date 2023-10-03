@@ -4,13 +4,13 @@ import elbuensabor.Enumerations.EstadoPedido;
 import elbuensabor.Enumerations.FormaPago;
 import elbuensabor.Enumerations.TipoEnvio;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -19,16 +19,17 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Pedido extends Base{
     @NotNull
     @Column(name = "fecha_pedido")
-    @Temporal(TemporalType.TIMESTAMP)
+
     private Date fechaPedido;
 
     @NotNull
     @Column(name = "hora_estimada_finalizacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date horaEstimadaFinalizacion;
+
+    private LocalTime horaEstimadaFinalizacion;
 
     @NotNull
     @Column(name = "total", precision = 10, scale = 2)
@@ -51,27 +52,25 @@ public class Pedido extends Base{
     @Column(name = "forma_pago")
     @Enumerated(EnumType.STRING)
     private FormaPago formaPago;
+    @Column(name = "fechaAlta")
 
-    @ManyToOne(optional = false)
+    private LocalDateTime fechaAlta;
+    @Column(name = "fechaBaja")
+
+    private Date fechaBaja;
+    @Column(name = "fechaModificacion")
+
+    private Date fechaModificacion;
+
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_domicilio_entrega")
     private Domicilio domicilioEntrega;
 
     @NotNull
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @NotNull
-    @Column(name = "fecha_alta")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
 
-    @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
-
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
 
 }

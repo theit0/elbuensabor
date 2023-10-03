@@ -1,10 +1,7 @@
 package elbuensabor.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
@@ -15,6 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class ArticuloManufacturado extends Base{
     @NotNull
     private String denominacion;
@@ -36,17 +34,15 @@ public class ArticuloManufacturado extends Base{
 
     @Column(length = 500, name = "url_imagen")
     private String urlImagen;
+    @Column(name = "fechaAlta")
 
-    @NotNull
-    @Column(name = "fecha_alta")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;
+    @Column(name = "fechaBaja")
 
-    @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaBaja;
+    @Column(name = "fechaModificacion")
+
     private Date fechaModificacion;
 
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
+
 }

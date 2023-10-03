@@ -1,10 +1,7 @@
 package elbuensabor.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
@@ -14,6 +11,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class DetallePedido extends Base{
     @NotNull
     private Integer cantidad;
@@ -26,16 +24,16 @@ public class DetallePedido extends Base{
     @Column(name = "subtotal_costo", precision = 10, scale = 2)
     private BigDecimal subtotalCosto;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_articulo_insumo")
     private ArticuloInsumo articuloInsumo;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_articulo_manufacturado")
     private ArticuloManufacturado articuloManufacturado;
 
     @NotNull
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_pedido")
     private Pedido pedido;
 

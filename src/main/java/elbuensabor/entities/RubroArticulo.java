@@ -1,12 +1,10 @@
 package elbuensabor.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 @Entity
@@ -15,8 +13,9 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class RubroArticulo extends Base{
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
     @JoinColumn(name = "id_rubro_padre")
     private RubroArticulo rubroPadre;
 
@@ -25,19 +24,16 @@ public class RubroArticulo extends Base{
 
     @NotNull
     private String denominacion;
+    @Column(name = "fechaAlta")
 
-    @NotNull
-    @Column(name = "fecha_alta")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
+    private LocalDateTime fechaAlta;
+    @Column(name = "fechaBaja")
+    private Date fechaBaja;
+    @Column(name = "fechaModificacion")
 
-    @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
 
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
+
 
     public RubroArticulo(String denominacion, RubroArticulo rubroPadre) {
         this.denominacion = denominacion;

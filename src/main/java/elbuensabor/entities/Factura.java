@@ -2,13 +2,11 @@ package elbuensabor.entities;
 
 import elbuensabor.Enumerations.FormaPago;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -17,11 +15,12 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Factura extends Base{
     @NotNull
     @Column(name = "fecha_facturacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaFacturacion;
+
+    private LocalDateTime fechaFacturacion;
 
     @Column(name = "mp_payment_id")
     private Long mpPaymentId;
@@ -41,19 +40,17 @@ public class Factura extends Base{
     @NotNull
     @Column(name = "total_venta", precision = 10, scale = 2)
     private BigDecimal totalVenta;
+    @Column(name = "fechaAlta")
 
-    @NotNull
-    @Column(name = "fecha_alta")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
+    private LocalDateTime fechaAlta;
+    @Column(name = "fechaBaja")
 
-    @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaBaja;
+    @Column(name = "fechaModificacion")
+
     private Date fechaModificacion;
 
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
+
 
     @NotNull
     @OneToOne(cascade = CascadeType.REFRESH)

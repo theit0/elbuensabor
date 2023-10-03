@@ -1,13 +1,11 @@
 package elbuensabor.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
 @Table(name = "Articulo_Insumo")
@@ -15,6 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class ArticuloInsumo extends Base{
 
     @NotNull
@@ -36,25 +35,23 @@ public class ArticuloInsumo extends Base{
     private BigDecimal stockMinimo;
 
     @NotNull
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_unidad_medida")
     private UnidadMedida unidadMedida;
 
     @NotNull
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_rubro_articulo")
     private RubroArticulo rubroArticulo;
+    @Column(name = "fechaAlta")
 
-    @NotNull
-    @Column(name = "fecha_alta")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
+    private LocalDateTime fechaAlta;
+    @Column(name = "fechaBaja")
 
-    @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaBaja;
+    @Column(name = "fechaModificacion")
+
     private Date fechaModificacion;
 
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
+
 }

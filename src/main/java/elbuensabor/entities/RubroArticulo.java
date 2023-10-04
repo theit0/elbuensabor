@@ -15,12 +15,12 @@ import java.util.List;
 @Setter
 @Builder
 public class RubroArticulo extends Base{
-    @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_rubro_padre")
-    private RubroArticulo rubroPadre;
+   // @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
+    //@JoinColumn(name = "id_rubro_padre")
+    //private RubroArticulo rubroPadre;
 
-    @OneToMany(mappedBy = "rubroPadre")
-    private List<RubroArticulo> subRubros;
+    //@OneToMany(mappedBy = "rubroPadre")
+    //private List<RubroArticulo> subRubros;
 
     @NotNull
     private String denominacion;
@@ -35,13 +35,13 @@ public class RubroArticulo extends Base{
 
 
 
-    public RubroArticulo(String denominacion, RubroArticulo rubroPadre) {
-        this.denominacion = denominacion;
-        this.rubroPadre = rubroPadre;
-    }
+   // public RubroArticulo(String denominacion, RubroArticulo rubroPadre) {
+     //   this.denominacion = denominacion;
+       // this.rubroPadre = rubroPadre;
+   // }
 
-    public void setSubRubros(List<RubroArticulo> subRubros) {
-        this.subRubros.clear();
-        this.subRubros.addAll(subRubros);
-    }
+    //public void setSubRubros(List<RubroArticulo> subRubros) {
+      //  this.subRubros.clear();
+       // this.subRubros.addAll(subRubros);
+    //}
 }

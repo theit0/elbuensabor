@@ -4,6 +4,8 @@ import elbuensabor.entities.ArticuloManufacturado;
 import elbuensabor.repositories.ArticuloManufacturadoRepository;
 import elbuensabor.repositories.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +23,16 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
     public List<ArticuloManufacturado> buscarArticuloManufacturadoPorDenominacion(String denominacion) throws Exception{
         try {
             return articuloManufacturadoRepository.buscarArticuloManufacturadoPorDenominacion(denominacion);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public Page<ArticuloManufacturado> buscarArticuloManufacturadoPorDenominacion(String denominacion, Pageable pageable) throws Exception{
+        try {
+            Page<ArticuloManufacturado> articuloManufacturados = articuloManufacturadoRepository.buscarArticuloManufacturadoPorDenominacion(denominacion,pageable);
+            return articuloManufacturados;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }

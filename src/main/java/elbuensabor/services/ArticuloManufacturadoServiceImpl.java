@@ -6,6 +6,8 @@ import elbuensabor.repositories.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloManufacturado,Long> implements ArticuloManufacturadoService {
     @Autowired
@@ -13,5 +15,14 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
 
     public ArticuloManufacturadoServiceImpl(BaseRepository<ArticuloManufacturado, Long> baseRepository, ArticuloManufacturadoRepository articuloManufacturadoRepository) {
         super(baseRepository);
+    }
+
+    @Override
+    public List<ArticuloManufacturado> buscarArticuloManufacturadoPorDenominacion(String denominacion) throws Exception{
+        try {
+            return articuloManufacturadoRepository.buscarArticuloManufacturadoPorDenominacion(denominacion);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }

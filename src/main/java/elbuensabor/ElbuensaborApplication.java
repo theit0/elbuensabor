@@ -83,50 +83,43 @@ public class ElbuensaborApplication {
 					.build();
 			rubroArticuloRepository.save(bebidaconalcohol1);
 
-			ArticuloInsumo Cocacola = ArticuloInsumo.builder()
+			ArticuloManufacturado Cocacola = ArticuloManufacturado.builder()
 					.denominacion("Cocacola 500ml")
-					.precioCompra(new BigDecimal(599.99))
-					.stockActual(new BigDecimal(100))
-					.stockMinimo(new BigDecimal(10))
+					.costo(new BigDecimal(500))
+					.precioVenta(new BigDecimal(800))
 					.urlImagen("https://i.ibb.co/nDjVtXX/pngwing-com-2-1.png")
 					.fechaAlta(LocalDateTime.now())
 					.rubroArticulo(bebidasinalcohol1)
-					.unidadMedida(mililitros)
 					.build();
-			articuloInsumoRepository.save(Cocacola);
-			ArticuloInsumo Fanta = ArticuloInsumo.builder()
+			articuloManufacturadoRepository.save(Cocacola);
+			ArticuloManufacturado Fanta = ArticuloManufacturado.builder()
 					.denominacion("Fanta 500ml")
-					.precioCompra(new BigDecimal(599.99))
-					.stockActual(new BigDecimal(80))
-					.stockMinimo(new BigDecimal(10))
+					.costo(new BigDecimal(500))
+					.precioVenta(new BigDecimal(800))
 					.urlImagen("https://i.ibb.co/2h4WF2r/pngwing-com-3-1.png")
 					.fechaAlta(LocalDateTime.now())
 					.rubroArticulo(bebidasinalcohol1)
-					.unidadMedida(mililitros)
 					.build();
-			articuloInsumoRepository.save(Fanta);
-			ArticuloInsumo Sprite = ArticuloInsumo.builder()
+			articuloManufacturadoRepository.save(Fanta);
+			ArticuloManufacturado Sprite = ArticuloManufacturado.builder()
 					.denominacion("Sprite 500ml")
-					.precioCompra(new BigDecimal(599.99))
-					.stockActual(new BigDecimal(59))
-					.stockMinimo(new BigDecimal(10))
+					.costo(new BigDecimal(500))
+					.precioVenta(new BigDecimal(800))
 					.urlImagen("https://i.ibb.co/z75JBp3/pngwing-com-4-1.png")
 					.fechaAlta(LocalDateTime.now())
 					.rubroArticulo(bebidasinalcohol1)
-					.unidadMedida(mililitros)
+
 					.build();
-			articuloInsumoRepository.save(Sprite);
-			ArticuloInsumo Cerveza = ArticuloInsumo.builder()
+			articuloManufacturadoRepository.save(Sprite);
+			ArticuloManufacturado Cerveza = ArticuloManufacturado.builder()
 					.denominacion("Cerveza Heineken")
-					.precioCompra(new BigDecimal(899.99))
-					.stockActual(new BigDecimal(34))
-					.stockMinimo(new BigDecimal(5))
+					.costo(new BigDecimal(700))
+					.precioVenta(new BigDecimal(1000))
 					.urlImagen("https://i.ibb.co/0Jwv8dT/pngwing-com-11-1.png")
 					.fechaAlta(LocalDateTime.now())
 					.rubroArticulo(bebidaconalcohol1)
-					.unidadMedida(mililitros)
 					.build();
-			articuloInsumoRepository.save(Cerveza);
+			articuloManufacturadoRepository.save(Cerveza);
 			ArticuloManufacturado Hamburguesa = ArticuloManufacturado.builder()
 					.costo(new BigDecimal(1000))
 					.denominacion("Hamburguesa Completa")
@@ -243,7 +236,7 @@ public class ElbuensaborApplication {
 			pedidoRepository.save(pedido1);
 			DetallePedido detalle1 = DetallePedido.builder()
 					.cantidad(4)
-					.articuloInsumo(Cocacola)
+					.articuloManufacturado(Cocacola)
 					.pedido(pedido1)
 					.build();
 			detallePedidoRepository.save(detalle1);
@@ -256,7 +249,7 @@ public class ElbuensaborApplication {
 			facturaRepository.save(factura1);
 			DetalleFactura detallefac1 = DetalleFactura.builder()
 					.cantidad(4)
-					.articuloInsumo(Cocacola)
+					.articuloManufacturado(Cocacola)
 					.factura(factura1)
 					.build();
 			detalleFacturaRepository.save(detallefac1);

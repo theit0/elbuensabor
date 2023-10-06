@@ -16,12 +16,34 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
     public ArticuloManufacturadoServiceImpl(BaseRepository<ArticuloManufacturado, Long> baseRepository, ArticuloManufacturadoRepository articuloManufacturadoRepository) {
         super(baseRepository);
     }
+
     @Override
     public List<ArticuloManufacturado> busquedaPorDenominacion(String filtro) throws Exception {
         try {
-            List<ArticuloManufacturado> articuloManufacturados= articuloManufacturadoRepository.busquedaPorDenominacion(filtro);
+            List<ArticuloManufacturado> articuloManufacturados = articuloManufacturadoRepository.busquedaPorDenominacion(filtro);
             return articuloManufacturados;
-        }catch (Exception e){
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<ArticuloManufacturado> filtradoPorPrecioDesc() throws Exception {
+        try {
+            List<ArticuloManufacturado> articuloManufacturados = articuloManufacturadoRepository.filtradoPorPrecioDesc();
+            return articuloManufacturados;
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<ArticuloManufacturado> filtradoPorPrecioAsc() throws Exception {
+        try {
+            List<ArticuloManufacturado> articuloManufacturados = articuloManufacturadoRepository.filtradoPorPrecioAsc();
+            return articuloManufacturados;
+        } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }

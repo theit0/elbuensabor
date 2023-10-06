@@ -16,4 +16,16 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
             nativeQuery = true
     )
     List<ArticuloManufacturado> busquedaPorDenominacion(@Param("filtro")String filtro);
+    //Ordenar articulos por su precio(mayor a menor)
+    @Query(
+            value = "SELECT * FROM Articulo_Manufacturado ORDER BY Articulo_Manufacturado.precio_venta DESC",
+            nativeQuery = true
+    )
+    List<ArticuloManufacturado> filtradoPorPrecioDesc();
+    //Ordenar articulos por su precio(menor a mayor)
+    @Query(
+            value = "SELECT * FROM Articulo_Manufacturado ORDER BY Articulo_Manufacturado.precio_venta",
+            nativeQuery = true
+    )
+    List<ArticuloManufacturado> filtradoPorPrecioAsc();
 }

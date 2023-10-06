@@ -65,68 +65,48 @@ public class ElbuensaborApplication {
 					.fechaAlta(LocalDateTime.now())
 					.build();
 			rubroArticuloRepository.save(ComidaSana);
-			RubroArticulo bebidas = RubroArticulo.builder()
-					.denominacion("bebidas")
-					.fechaAlta(LocalDateTime.now())
-					.build();
-			rubroArticuloRepository.save(bebidas);
 			RubroArticulo bebidasinalcohol1 = RubroArticulo.builder()
-					.denominacion("bebidas sin alcohol")
+					.denominacion("Bebidas sin alcohol")
 					.fechaAlta(LocalDateTime.now())
 					//.rubroPadre(bebidas)
 					.build();
 			rubroArticuloRepository.save(bebidasinalcohol1);
 			RubroArticulo bebidaconalcohol1 = RubroArticulo.builder()
-					.denominacion("bebidas con alcohol")
+					.denominacion("Bebidas con alcohol")
 					.fechaAlta(LocalDateTime.now())
 					//.rubroPadre(bebidas)
 					.build();
 			rubroArticuloRepository.save(bebidaconalcohol1);
 
-			ArticuloInsumo Cocacola = ArticuloInsumo.builder()
-					.denominacion("Cocacola 500ml")
-					.precioCompra(new BigDecimal(599.99))
-					.stockActual(new BigDecimal(100))
-					.stockMinimo(new BigDecimal(10))
-					.urlImagen("https://i.ibb.co/nDjVtXX/pngwing-com-2-1.png")
-					.fechaAlta(LocalDateTime.now())
-					.rubroArticulo(bebidasinalcohol1)
-					.unidadMedida(mililitros)
-					.build();
-			articuloInsumoRepository.save(Cocacola);
-			ArticuloInsumo Fanta = ArticuloInsumo.builder()
+
+			ArticuloManufacturado Fanta = ArticuloManufacturado.builder()
 					.denominacion("Fanta 500ml")
-					.precioCompra(new BigDecimal(599.99))
-					.stockActual(new BigDecimal(80))
-					.stockMinimo(new BigDecimal(10))
+					.costo(new BigDecimal(500))
+					.precioVenta(new BigDecimal(800))
 					.urlImagen("https://i.ibb.co/2h4WF2r/pngwing-com-3-1.png")
 					.fechaAlta(LocalDateTime.now())
 					.rubroArticulo(bebidasinalcohol1)
-					.unidadMedida(mililitros)
 					.build();
-			articuloInsumoRepository.save(Fanta);
-			ArticuloInsumo Sprite = ArticuloInsumo.builder()
+			articuloManufacturadoRepository.save(Fanta);
+			ArticuloManufacturado Sprite = ArticuloManufacturado.builder()
 					.denominacion("Sprite 500ml")
-					.precioCompra(new BigDecimal(599.99))
-					.stockActual(new BigDecimal(59))
-					.stockMinimo(new BigDecimal(10))
+					.costo(new BigDecimal(500))
+					.precioVenta(new BigDecimal(800))
 					.urlImagen("https://i.ibb.co/z75JBp3/pngwing-com-4-1.png")
 					.fechaAlta(LocalDateTime.now())
 					.rubroArticulo(bebidasinalcohol1)
-					.unidadMedida(mililitros)
+
 					.build();
-			articuloInsumoRepository.save(Sprite);
-			ArticuloInsumo Cerveza = ArticuloInsumo.builder()
+			articuloManufacturadoRepository.save(Sprite);
+			ArticuloManufacturado Cerveza = ArticuloManufacturado.builder()
 					.denominacion("Cerveza Heineken")
-					.precioCompra(new BigDecimal(899.99))
-					.stockActual(new BigDecimal(34))
-					.stockMinimo(new BigDecimal(5))
+					.costo(new BigDecimal(700))
+					.precioVenta(new BigDecimal(1000))
 					.urlImagen("https://i.ibb.co/0Jwv8dT/pngwing-com-11-1.png")
 					.fechaAlta(LocalDateTime.now())
 					.rubroArticulo(bebidaconalcohol1)
-					.unidadMedida(mililitros)
 					.build();
-			articuloInsumoRepository.save(Cerveza);
+			articuloManufacturadoRepository.save(Cerveza);
 			ArticuloManufacturado Hamburguesa = ArticuloManufacturado.builder()
 					.costo(new BigDecimal(1000))
 					.denominacion("Hamburguesa Completa")
@@ -185,23 +165,23 @@ public class ElbuensaborApplication {
 			articuloManufacturadoRepository.save(PizzaEspe);
 			ArticuloManufacturado EmpanadasCarne = ArticuloManufacturado.builder()
 					.costo(new BigDecimal(800))
-					.denominacion("6 empanadas de carne")
+					.denominacion("Empanada de carne")
 					.descripcion("6 empanadas. Ideal para 1 persona")
 					.fechaAlta(LocalDateTime.now())
 					.precioVenta(new BigDecimal(1600))
 					.tiempoEstimadoCocina(20)
-					.urlImagen("https://i.ibb.co/ZgL0xZg/pngwing-com-10-1.png")
+					.urlImagen("https://i.ibb.co/yWCnPDX/pngwing-com-13.png")
 					.rubroArticulo(ComidaRapida)
 					.build();
 			articuloManufacturadoRepository.save(EmpanadasCarne);
 			ArticuloManufacturado EmpanadasJamon = ArticuloManufacturado.builder()
 					.costo(new BigDecimal(800))
-					.denominacion("6 empanadas de Jamon y queso")
+					.denominacion("Empanada de Jamon y queso")
 					.descripcion("6 empanadas. Ideal para 1 persona")
 					.fechaAlta(LocalDateTime.now())
 					.precioVenta(new BigDecimal(1600))
 					.tiempoEstimadoCocina(15)
-					.urlImagen("https://i.ibb.co/ZgL0xZg/pngwing-com-10-1.png")
+					.urlImagen("https://i.ibb.co/yWCnPDX/pngwing-com-13.png")
 					.rubroArticulo(ComidaRapida)
 					.build();
 			articuloManufacturadoRepository.save(EmpanadasJamon);
@@ -241,12 +221,7 @@ public class ElbuensaborApplication {
 					.horaEstimadaFinalizacion(horaEspecifica)
 					.build();
 			pedidoRepository.save(pedido1);
-			DetallePedido detalle1 = DetallePedido.builder()
-					.cantidad(4)
-					.articuloInsumo(Cocacola)
-					.pedido(pedido1)
-					.build();
-			detallePedidoRepository.save(detalle1);
+
 			Factura factura1 = Factura.builder()
 					.fechaAlta(LocalDateTime.now())
 					.fechaFacturacion(LocalDateTime.now())
@@ -254,13 +229,6 @@ public class ElbuensaborApplication {
 					.pedido(pedido1)
 					.build();
 			facturaRepository.save(factura1);
-			DetalleFactura detallefac1 = DetalleFactura.builder()
-					.cantidad(4)
-					.articuloInsumo(Cocacola)
-					.factura(factura1)
-					.build();
-			detalleFacturaRepository.save(detallefac1);
-
 
 		};
 	}

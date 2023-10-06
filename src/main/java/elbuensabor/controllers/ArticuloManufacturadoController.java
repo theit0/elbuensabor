@@ -30,4 +30,20 @@ public class ArticuloManufacturadoController extends BaseControllerImpl<Articulo
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
     }
+
+
+    @GetMapping("/filtroPorRubro")
+    public ResponseEntity<?> filtroPorRubro(@RequestParam String denominacionRubro){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.filtroPorRubroNative(denominacionRubro));
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
+
+
+
+
+
 }

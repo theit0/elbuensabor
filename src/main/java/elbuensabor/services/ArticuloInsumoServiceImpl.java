@@ -13,7 +13,7 @@ import java.util.List;
 public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo,Long> implements ArticuloInsumoService {
     @Autowired
     ArticuloInsumoRepository articuloInsumoRepository;
-private elbuensabor.repositories.ArticuloManufacturadoRepository articuloManufacturadoRepository;
+    private elbuensabor.repositories.ArticuloManufacturadoRepository articuloManufacturadoRepository;
     public ArticuloInsumoServiceImpl(BaseRepository<ArticuloInsumo, Long> baseRepository, ArticuloInsumoRepository articuloInsumoRepository) {
         super(baseRepository);
     }

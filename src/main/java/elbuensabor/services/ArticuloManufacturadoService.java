@@ -12,4 +12,6 @@ public interface ArticuloManufacturadoService extends BaseService<ArticuloManufa
     Page<ArticuloManufacturado> buscarArticuloManufacturadoPorDenominacion(String denominacion, Pageable pageable) throws Exception;
     List<ArticuloManufacturado> filtroPorRubroNative(String denominacionRubro) throws Exception;
 
+    List<ArticuloManufacturado> filtradoPorPrecioDesc() throws Exception;
+    List<ArticuloManufacturado> filtradoPorPrecioAsc() throws Exception;
 }

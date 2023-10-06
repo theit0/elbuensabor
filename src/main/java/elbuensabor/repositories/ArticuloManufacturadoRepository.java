@@ -32,4 +32,19 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
             nativeQuery = true
     )
     List<ArticuloManufacturado> filtroPorRubroNative(@Param("denominacionRubro") String denominacionRubro);
+
+
+
+    @Query(
+            value = "SELECT * FROM articulo_manufacturado ORDER BY articulo_manufacturado.precio_venta DESC",
+            nativeQuery = true
+    )
+    List<ArticuloManufacturado> filtradoPorPrecioDesc();
+    //Ordenar articulos por su precio(menor a mayor)
+    @Query(
+            value = "SELECT * FROM articulo_manufacturado ORDER BY articulo_manufacturado.precio_venta",
+            nativeQuery = true
+    )
+    List<ArticuloManufacturado> filtradoPorPrecioAsc();
+
 }

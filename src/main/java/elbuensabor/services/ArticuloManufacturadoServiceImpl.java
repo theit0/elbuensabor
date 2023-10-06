@@ -49,4 +49,26 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
             throw new Exception(e.getMessage());
         }
     }
+
+    @Override
+    public List<ArticuloManufacturado> filtradoPorPrecioDesc() throws Exception {
+        try {
+            List<ArticuloManufacturado> articuloManufacturados = articuloManufacturadoRepository.filtradoPorPrecioDesc();
+            return articuloManufacturados;
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<ArticuloManufacturado> filtradoPorPrecioAsc() throws Exception {
+        try {
+            List<ArticuloManufacturado> articuloManufacturados = articuloManufacturadoRepository.filtradoPorPrecioAsc();
+            return articuloManufacturados;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
 }

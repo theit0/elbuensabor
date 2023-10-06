@@ -42,7 +42,22 @@ public class ArticuloManufacturadoController extends BaseControllerImpl<Articulo
         }
     }
 
-
+    @GetMapping("/filtradoPorPrecioDesc")
+    public ResponseEntity<?> filtradoPorPrecioDesc(){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.filtradoPorPrecioDesc());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+        }
+    }
+    @GetMapping("/filtradoPorPrecioAsc")
+    public ResponseEntity<?> filtradoPorPrecioAsc(){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.filtradoPorPrecioAsc());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+        }
+    }
 
 
 

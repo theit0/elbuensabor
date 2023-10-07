@@ -2,6 +2,8 @@ package elbuensabor.services;
 
 import elbuensabor.entities.Base;
 import elbuensabor.repositories.BaseRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +27,18 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
             throw new Exception(e.getMessage());
         }
     }
+
+    @Override
+    @Transactional
+    public Page<E> findAllPaged(Pageable pageable) throws Exception {
+        try {
+            Page<E> entities = baseRepository.findAll(pageable);
+            return entities;
+        } catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    };
+
 
 
     @Transactional

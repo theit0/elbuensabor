@@ -17,15 +17,16 @@ import java.util.List;
 public class RubroArticulo extends Base{
 
 
-    @NotNull
+    @Column(name = "denominacion")
     private String denominacion;
-    @Column(name = "fechaAlta")
 
+    @Column(name = "fechaAlta")
     private LocalDateTime fechaAlta;
+
     @Column(name = "fechaBaja")
     private Date fechaBaja;
-    @Column(name = "fechaModificacion")
 
+    @Column(name = "fechaModificacion")
     private Date fechaModificacion;
 
 

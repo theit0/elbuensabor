@@ -114,7 +114,7 @@ public class ElbuensaborApplication {
 					.fechaAlta(LocalDateTime.now())
 					.precioVenta(new BigDecimal(2000))
 					.tiempoEstimadoCocina(50)
-					.urlImagen("https://i.ibb.co/Srv0rhf/pngwing-com-5-1.png")
+					.urlImagen("https://i.ibb.co/2tV7KPm/pngwing-com-25.webp")
 					.rubroArticulo(ComidaRapida)
 					.build();
 			articuloManufacturadoRepository.save(Hamburguesa);
@@ -185,6 +185,130 @@ public class ElbuensaborApplication {
 					.rubroArticulo(ComidaRapida)
 					.build();
 			articuloManufacturadoRepository.save(EmpanadasJamon);
+
+
+
+
+
+
+			ArticuloManufacturado HotDog = ArticuloManufacturado.builder()
+					.denominacion("Hot Dog Clásico")
+					.descripcion("Deliciosa salchicha en pan con aderezos clásicos. Ideal para una persona.")
+					.costo(new BigDecimal(300))
+					.precioVenta(new BigDecimal(500))
+					.urlImagen("https://i.ibb.co/GQzpp9Y/pngwing-com-15.webp")
+					.fechaAlta(LocalDateTime.now())
+					.rubroArticulo(ComidaRapida)
+					.build();
+			articuloManufacturadoRepository.save(HotDog);
+
+			ArticuloManufacturado PapasFritas = ArticuloManufacturado.builder()
+					.denominacion("Papas Fritas Crispy")
+					.descripcion("Crujientes papas fritas con la mezcla perfecta de especias. Ideal para compartir.")
+					.costo(new BigDecimal(200))
+					.precioVenta(new BigDecimal(400))
+					.urlImagen("https://i.ibb.co/HgdGxsX/pngwing-com-16.webp")
+					.fechaAlta(LocalDateTime.now())
+					.rubroArticulo(ComidaRapida)
+					.build();
+			articuloManufacturadoRepository.save(PapasFritas);
+
+			ArticuloManufacturado NuggetsPollo = ArticuloManufacturado.builder()
+					.denominacion("Nuggets de Pollo")
+					.descripcion("Trozos jugosos de pollo empanizados. Perfectos para picar.")
+					.costo(new BigDecimal(400))
+					.precioVenta(new BigDecimal(700))
+					.urlImagen("https://i.ibb.co/37mHffp/pngwing-com-17.webp")
+					.fechaAlta(LocalDateTime.now())
+					.rubroArticulo(ComidaRapida)
+					.build();
+			articuloManufacturadoRepository.save(NuggetsPollo);
+
+			ArticuloManufacturado EnsaladaCesar = ArticuloManufacturado.builder()
+					.denominacion("Ensalada César")
+					.descripcion("Ensalada fresca con pollo, crutones y aderezo César. Una opción saludable y deliciosa.")
+					.costo(new BigDecimal(350))
+					.precioVenta(new BigDecimal(600))
+					.urlImagen("https://i.ibb.co/RjgwBm3/pngwing-com-18.webp")
+					.fechaAlta(LocalDateTime.now())
+					.rubroArticulo(ComidaRapida)
+					.build();
+			articuloManufacturadoRepository.save(EnsaladaCesar);
+
+
+			ArticuloManufacturado SushiVariado = ArticuloManufacturado.builder()
+					.denominacion("Sushi Variado")
+					.descripcion("Variedad de sushi fresco y delicioso. Una experiencia culinaria única.")
+					.costo(new BigDecimal(600))
+					.precioVenta(new BigDecimal(1000))
+					.urlImagen("https://i.ibb.co/Ph8vryj/pngwing-com-19.webp")
+					.fechaAlta(LocalDateTime.now())
+					.rubroArticulo(ComidaRapida)
+					.build();
+			articuloManufacturadoRepository.save(SushiVariado);
+
+			ArticuloManufacturado Burrito = ArticuloManufacturado.builder()
+					.denominacion("Burrito Mexicano")
+					.descripcion("Sabroso burrito con carne, arroz, frijoles y salsa. Una explosión de sabores mexicanos.")
+					.costo(new BigDecimal(500))
+					.precioVenta(new BigDecimal(900))
+					.urlImagen("https://i.ibb.co/XWT9nqC/pngwing-com-23.webp")
+					.fechaAlta(LocalDateTime.now())
+					.rubroArticulo(ComidaRapida)
+					.build();
+			articuloManufacturadoRepository.save(Burrito);
+
+			ArticuloManufacturado Donuts = ArticuloManufacturado.builder()
+					.denominacion("Donuts Glaseados")
+					.descripcion("Donuts esponjosos y glaseados en varios sabores. Un dulce placer para cualquier momento.")
+					.costo(new BigDecimal(250))
+					.precioVenta(new BigDecimal(450))
+					.urlImagen("https://i.ibb.co/GTj860n/pngwing-com-20.webp")
+					.fechaAlta(LocalDateTime.now())
+					.rubroArticulo(ComidaRapida)
+					.build();
+			articuloManufacturadoRepository.save(Donuts);
+
+			ArticuloManufacturado Tiramisu = ArticuloManufacturado.builder()
+					.denominacion("Tiramisú Italiano")
+					.descripcion("Postre italiano clásico con capas de café y crema mascarpone. Irresistiblemente delicioso.")
+					.costo(new BigDecimal(350))
+					.precioVenta(new BigDecimal(600))
+					.urlImagen("https://i.ibb.co/8cXjY3T/pngwing-com-21.webp")
+					.fechaAlta(LocalDateTime.now())
+					.rubroArticulo(ComidaRapida)
+					.build();
+			articuloManufacturadoRepository.save(Tiramisu);
+
+			ArticuloManufacturado WrapVegetariano = ArticuloManufacturado.builder()
+					.denominacion("Wrap Vegetariano")
+					.descripcion("Wrap saludable con una mezcla de verduras frescas y aderezo ligero. Perfecto para vegetarianos.")
+					.costo(new BigDecimal(400))
+					.precioVenta(new BigDecimal(700))
+					.urlImagen("https://i.ibb.co/0Y36Zyp/pngwing-com-22.webp")
+					.fechaAlta(LocalDateTime.now())
+					.rubroArticulo(ComidaRapida)
+					.build();
+			articuloManufacturadoRepository.save(WrapVegetariano);
+
+			ArticuloManufacturado Milanesa = ArticuloManufacturado.builder()
+					.denominacion("Milanesa de Pollo")
+					.descripcion("Jugosa milanesa de pollo empanizada, acompañada de papas fritas. ¡Una delicia clásica!")
+					.costo(new BigDecimal(350))
+					.precioVenta(new BigDecimal(600))
+					.urlImagen("https://i.ibb.co/TYY8Y0g/pngwing-com-24.webp")
+					.fechaAlta(LocalDateTime.now())
+					.rubroArticulo(ComidaRapida)
+					.build();
+			articuloManufacturadoRepository.save(Milanesa);
+
+
+
+
+
+
+
+
 
 
 

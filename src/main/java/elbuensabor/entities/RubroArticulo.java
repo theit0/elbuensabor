@@ -30,4 +30,5 @@ public class RubroArticulo extends Base{
     private Date fechaModificacion;
 
 
+
 }

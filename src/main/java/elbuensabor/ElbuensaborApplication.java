@@ -110,7 +110,7 @@ public class ElbuensaborApplication {
 			ArticuloManufacturado Hamburguesa = ArticuloManufacturado.builder()
 					.costo(new BigDecimal(1000))
 					.denominacion("Hamburguesa Completa")
-					.descripcion("Hamburguesa una carne, verduras, y queso.  Ideal para 1 persona")
+					.descripcion("Hamburguesa una carne, verduras, y queso.")
 					.fechaAlta(LocalDateTime.now())
 					.precioVenta(new BigDecimal(2000))
 					.tiempoEstimadoCocina(50)
@@ -121,7 +121,7 @@ public class ElbuensaborApplication {
 			ArticuloManufacturado Taco = ArticuloManufacturado.builder()
 					.costo(new BigDecimal(500))
 					.denominacion("Taco Mexicano")
-					.descripcion("Taco azteca con mucho picante.  Ideal para 1 persona")
+					.descripcion("Taco azteca con mucho picante.")
 					.fechaAlta(LocalDateTime.now())
 					.precioVenta(new BigDecimal(1000))
 					.tiempoEstimadoCocina(30)
@@ -133,7 +133,7 @@ public class ElbuensaborApplication {
 			ArticuloManufacturado Lomo = ArticuloManufacturado.builder()
 					.costo(new BigDecimal(1000))
 					.denominacion("Lomo completo de carne")
-					.descripcion("trae huevo, queso, jamon. Ideal para 2 personas")
+					.descripcion("Huevo, queso, jamon.")
 					.fechaAlta(LocalDateTime.now())
 					.precioVenta(new BigDecimal(2000))
 					.tiempoEstimadoCocina(40)
@@ -144,7 +144,7 @@ public class ElbuensaborApplication {
 			ArticuloManufacturado PizzaMuzza = ArticuloManufacturado.builder()
 					.costo(new BigDecimal(750))
 					.denominacion("Pizza muzzarela")
-					.descripcion("8 poriones. Ideal para 2 personas")
+					.descripcion("8 porciones. Ideal para 2 personas")
 					.fechaAlta(LocalDateTime.now())
 					.precioVenta(new BigDecimal(1500))
 					.tiempoEstimadoCocina(10)
@@ -155,7 +155,7 @@ public class ElbuensaborApplication {
 			ArticuloManufacturado PizzaEspe = ArticuloManufacturado.builder()
 					.costo(new BigDecimal(750))
 					.denominacion("Pizza Peperoni")
-					.descripcion("8 poriones. Ideal para 2 personas")
+					.descripcion("8 porciones. Ideal para 2 personas")
 					.fechaAlta(LocalDateTime.now())
 					.precioVenta(new BigDecimal(1500))
 					.tiempoEstimadoCocina(10)
@@ -174,26 +174,11 @@ public class ElbuensaborApplication {
 					.rubroArticulo(ComidaRapida)
 					.build();
 			articuloManufacturadoRepository.save(EmpanadasCarne);
-			ArticuloManufacturado EmpanadasJamon = ArticuloManufacturado.builder()
-					.costo(new BigDecimal(800))
-					.denominacion("Empanada de Jamon y queso")
-					.descripcion("6 empanadas. Ideal para 1 persona")
-					.fechaAlta(LocalDateTime.now())
-					.precioVenta(new BigDecimal(1600))
-					.tiempoEstimadoCocina(15)
-					.urlImagen("https://i.ibb.co/yWCnPDX/pngwing-com-13.png")
-					.rubroArticulo(ComidaRapida)
-					.build();
-			articuloManufacturadoRepository.save(EmpanadasJamon);
-
-
-
-
 
 
 			ArticuloManufacturado HotDog = ArticuloManufacturado.builder()
 					.denominacion("Hot Dog Clásico")
-					.descripcion("Deliciosa salchicha en pan con aderezos clásicos. Ideal para una persona.")
+					.descripcion("Deliciosa salchicha en pan con aderezos clásicos.")
 					.costo(new BigDecimal(300))
 					.precioVenta(new BigDecimal(500))
 					.urlImagen("https://i.ibb.co/GQzpp9Y/pngwing-com-15.webp")
@@ -204,7 +189,7 @@ public class ElbuensaborApplication {
 
 			ArticuloManufacturado PapasFritas = ArticuloManufacturado.builder()
 					.denominacion("Papas Fritas Crispy")
-					.descripcion("Crujientes papas fritas con la mezcla perfecta de especias. Ideal para compartir.")
+					.descripcion("Crujientes papas fritas con la mezcla perfecta de especias.")
 					.costo(new BigDecimal(200))
 					.precioVenta(new BigDecimal(400))
 					.urlImagen("https://i.ibb.co/HgdGxsX/pngwing-com-16.webp")
@@ -215,7 +200,7 @@ public class ElbuensaborApplication {
 
 			ArticuloManufacturado NuggetsPollo = ArticuloManufacturado.builder()
 					.denominacion("Nuggets de Pollo")
-					.descripcion("Trozos jugosos de pollo empanizados. Perfectos para picar.")
+					.descripcion("Trozos jugosos de pollo empanizados.")
 					.costo(new BigDecimal(400))
 					.precioVenta(new BigDecimal(700))
 					.urlImagen("https://i.ibb.co/37mHffp/pngwing-com-17.webp")
@@ -226,7 +211,7 @@ public class ElbuensaborApplication {
 
 			ArticuloManufacturado EnsaladaCesar = ArticuloManufacturado.builder()
 					.denominacion("Ensalada César")
-					.descripcion("Ensalada fresca con pollo, crutones y aderezo César. Una opción saludable y deliciosa.")
+					.descripcion("Ensalada fresca con pollo, crutones y aderezo César.")
 					.costo(new BigDecimal(350))
 					.precioVenta(new BigDecimal(600))
 					.urlImagen("https://i.ibb.co/RjgwBm3/pngwing-com-18.webp")
@@ -238,7 +223,7 @@ public class ElbuensaborApplication {
 
 			ArticuloManufacturado SushiVariado = ArticuloManufacturado.builder()
 					.denominacion("Sushi Variado")
-					.descripcion("Variedad de sushi fresco y delicioso. Una experiencia culinaria única.")
+					.descripcion("Variedad de sushi fresco y delicioso.")
 					.costo(new BigDecimal(600))
 					.precioVenta(new BigDecimal(1000))
 					.urlImagen("https://i.ibb.co/Ph8vryj/pngwing-com-19.webp")
@@ -249,7 +234,7 @@ public class ElbuensaborApplication {
 
 			ArticuloManufacturado Burrito = ArticuloManufacturado.builder()
 					.denominacion("Burrito Mexicano")
-					.descripcion("Sabroso burrito con carne, arroz, frijoles y salsa. Una explosión de sabores mexicanos.")
+					.descripcion("Sabroso burrito con carne, arroz, frijoles y salsa.")
 					.costo(new BigDecimal(500))
 					.precioVenta(new BigDecimal(900))
 					.urlImagen("https://i.ibb.co/XWT9nqC/pngwing-com-23.webp")
@@ -260,7 +245,7 @@ public class ElbuensaborApplication {
 
 			ArticuloManufacturado Donuts = ArticuloManufacturado.builder()
 					.denominacion("Donuts Glaseados")
-					.descripcion("Donuts esponjosos y glaseados en varios sabores. Un dulce placer para cualquier momento.")
+					.descripcion("Donuts esponjosos y glaseados en varios sabores.")
 					.costo(new BigDecimal(250))
 					.precioVenta(new BigDecimal(450))
 					.urlImagen("https://i.ibb.co/GTj860n/pngwing-com-20.webp")
@@ -271,7 +256,7 @@ public class ElbuensaborApplication {
 
 			ArticuloManufacturado Tiramisu = ArticuloManufacturado.builder()
 					.denominacion("Tiramisú Italiano")
-					.descripcion("Postre italiano clásico con capas de café y crema mascarpone. Irresistiblemente delicioso.")
+					.descripcion("Postre italiano clásico con capas de café.")
 					.costo(new BigDecimal(350))
 					.precioVenta(new BigDecimal(600))
 					.urlImagen("https://i.ibb.co/8cXjY3T/pngwing-com-21.webp")
@@ -281,8 +266,8 @@ public class ElbuensaborApplication {
 			articuloManufacturadoRepository.save(Tiramisu);
 
 			ArticuloManufacturado WrapVegetariano = ArticuloManufacturado.builder()
-					.denominacion("Wrap Vegetariano")
-					.descripcion("Wrap saludable con una mezcla de verduras frescas y aderezo ligero. Perfecto para vegetarianos.")
+					.denominacion("Chocolate")
+					.descripcion("Chocolate en barra.")
 					.costo(new BigDecimal(400))
 					.precioVenta(new BigDecimal(700))
 					.urlImagen("https://i.ibb.co/0Y36Zyp/pngwing-com-22.webp")
@@ -293,7 +278,7 @@ public class ElbuensaborApplication {
 
 			ArticuloManufacturado Milanesa = ArticuloManufacturado.builder()
 					.denominacion("Milanesa de Pollo")
-					.descripcion("Jugosa milanesa de pollo empanizada, acompañada de papas fritas. ¡Una delicia clásica!")
+					.descripcion("Jugosa milanesa de pollo empanizada.")
 					.costo(new BigDecimal(350))
 					.precioVenta(new BigDecimal(600))
 					.urlImagen("https://i.ibb.co/TYY8Y0g/pngwing-com-24.webp")

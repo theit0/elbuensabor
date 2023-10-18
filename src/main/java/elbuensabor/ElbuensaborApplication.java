@@ -56,12 +56,12 @@ public class ElbuensaborApplication {
 					.build();
 			unidadMedidaRepository.save(mililitros);
 			RubroArticulo ComidaRapida = RubroArticulo.builder()
-					.denominacion("Comida Rapida")
+					.denominacion("Comida rapida")
 					.fechaAlta(LocalDateTime.now())
 					.build();
 			rubroArticuloRepository.save(ComidaRapida);
 			RubroArticulo ComidaSana = RubroArticulo.builder()
-					.denominacion("Comida Sana")
+					.denominacion("Comida sana")
 					.fechaAlta(LocalDateTime.now())
 					.build();
 			rubroArticuloRepository.save(ComidaSana);

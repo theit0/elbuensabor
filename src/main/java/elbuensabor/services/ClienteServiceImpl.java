@@ -1,5 +1,6 @@
 package elbuensabor.services;
 
+import elbuensabor.DTO.ClienteDTO;
 import elbuensabor.entities.Cliente;
 import elbuensabor.repositories.BaseRepository;
 import elbuensabor.repositories.ClienteRepository;
@@ -16,5 +17,15 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente,Long> implements
     public ClienteServiceImpl(BaseRepository<Cliente, Long> baseRepository, ClienteRepository clienteRepository) {
         super(baseRepository);
         this.clienteRepository = clienteRepository;
+    }
+
+    @Override
+    public List<ClienteDTO> filtradoPorPedidos() throws Exception {
+        try {
+            List<ClienteDTO> clientes = clienteRepository.filtroPorPedidos();
+            return clientes;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }

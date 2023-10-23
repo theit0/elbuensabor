@@ -19,7 +19,9 @@ public enum EstadoPedido {
 
     NOTA_CREDITO ,
 
-    COMPLETADO ;
+    COMPLETADO,
+
+    A_CONFIRMAR;
 
 
 

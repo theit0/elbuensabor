@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface PedidoService extends BaseService<Pedido,Long>{
     List<Pedido> BusquedaPedidoPorEstado(String filtro) throws Exception;
+    List<Pedido> BusquedaPedidoAConfirmar() throws Exception;
+
 }

@@ -28,4 +28,14 @@ public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo,Lo
             throw new Exception(e.getMessage());
         }
     }
+
+    @Override
+    public List<ArticuloInsumo> busquedaPorAlta() throws Exception {
+        try {
+            List<ArticuloInsumo> articuloInsumos = articuloInsumoRepository.busquedaPorAlta();
+            return articuloInsumos;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }

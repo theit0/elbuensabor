@@ -5,6 +5,7 @@ import elbuensabor.Enumerations.FormaPago;
 import elbuensabor.Enumerations.TipoEnvio;
 import elbuensabor.entities.*;
 import elbuensabor.repositories.*;
+import net.bytebuddy.asm.Advice;
 import org.aspectj.lang.reflect.UnlockSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -300,7 +301,7 @@ public class ElbuensaborApplication {
 			Pedido pedido3 = Pedido.builder()
 					.cliente(cliente2)
 					.domicilioEntrega(domicilio1)
-					.estado(EstadoPedido.PAGADO)
+					.estado(EstadoPedido.A_CONFIRMAR)
 					.tipoEnvio(TipoEnvio.DELIVERY)
 					.totalCosto(new BigDecimal(4000))
 					.fechaPedido(LocalDate.of(2023, 10, 10))
@@ -314,6 +315,19 @@ public class ElbuensaborApplication {
 					.pedido(pedido1)
 					.build();
 			detallePedidoRepository.save(detalle3);
+
+
+			ArticuloInsumo articulo1 = ArticuloInsumo.builder()
+					.rubroArticulo(null)
+					.denominacion("CACA")
+					.fechaBaja(null)
+					.fechaAlta(LocalDateTime.now())
+					.precioCompra(new BigDecimal(1200))
+					.stockActual(new BigDecimal(100))
+					.stockMinimo(new BigDecimal(10))
+					.unidadMedida(null)
+					.build();
+					articuloInsumoRepository.save(articulo1);
 
 
 		};

@@ -17,4 +17,12 @@ public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,
             nativeQuery = true
     )
     List<ArticuloInsumo> busquedaPorDenominacionA(@Param("filtro")String filtro);
+
+
+
+    @Query(
+            value = "SELECT * FROM Articulo_Insumo WHERE Articulo_Insumo.FECHA_BAJA IS NULL",
+            nativeQuery = true
+    )
+    List<ArticuloInsumo> busquedaPorAlta();
 }

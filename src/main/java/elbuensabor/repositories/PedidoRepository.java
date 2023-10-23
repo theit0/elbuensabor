@@ -15,4 +15,11 @@ public interface PedidoRepository extends BaseRepository<Pedido,Long>{
             nativeQuery = true
     )
     List<Pedido> BusquedaPedidoPorEstado(@Param("filtro")String filtro);
+
+
+    @Query(
+            value="SELECT * FROM pedido WHERE pedido.estado = 'A_CONFIRMAR'  ",
+            nativeQuery = true
+    )
+    List<Pedido> BusquedaPedidoAConfirmar();
 }

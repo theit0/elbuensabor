@@ -20,4 +20,18 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
         }
 
     }
+
+
+    @GetMapping("/busquedaPedidosAConfirmar")
+    public ResponseEntity<?> BusquedaPedidoAConfirmar(){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.BusquedaPedidoAConfirmar());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+
+        }
+
+    }
+
+
 }

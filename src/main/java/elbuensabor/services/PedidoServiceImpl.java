@@ -28,4 +28,18 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
             throw new Exception(e.getMessage());
         }
     }
+
+
+    @Override
+    public List<Pedido> BusquedaPedidoAConfirmar() throws Exception {
+        try {
+            List<Pedido> pedidos = pedidoRepository.BusquedaPedidoAConfirmar();
+            return pedidos;
+        }
+        catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+
 }

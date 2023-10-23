@@ -20,5 +20,15 @@ public class ArticuloInsumoController extends BaseControllerImpl<ArticuloInsumo,
 
         }
     }
+
+    @GetMapping("/busquedaPorAlta")
+    public ResponseEntity<?> busquedaPorAlta(){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.busquedaPorAlta());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+
+        }
+    }
 }
 

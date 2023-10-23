@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -230,6 +231,8 @@ public class ElbuensaborApplication {
 					.domicilioEntrega(domicilio1)
 					.estado(EstadoPedido.PAGADO)
 					.tipoEnvio(TipoEnvio.DELIVERY)
+					.totalCosto(new BigDecimal(8000))
+					.fechaPedido(LocalDate.of(2023, 10, 1))
 					.fechaAlta(LocalDateTime.now())
 					.horaEstimadaFinalizacion(horaEspecifica)
 					.build();
@@ -253,6 +256,64 @@ public class ElbuensaborApplication {
 					.factura(factura1)
 					.build();
 			detalleFacturaRepository.save(detallefac1);
+			Usuario usuario2 = Usuario.builder()
+					.asusername("theoP")
+					.auth0_id(1)
+					.fechaAlta(LocalDateTime.now())
+					.build();
+			Cliente cliente2 = Cliente.builder()
+					.apellido("Pelegrina")
+					.email("TheoP@gmail.com")
+					.fechaAlta(LocalDateTime.now())
+					.nombre("Theo")
+					.telefono("2616622682")
+					.usuario(usuario2)
+					.build();
+			clienteRepository.save(cliente2);
+			Domicilio domicilio2 = Domicilio.builder()
+					.calle("la plata")
+					.codPostal(5507)
+					.fechaAlta(LocalDateTime.now())
+					.localidad("vistalba")
+					.numero(444)
+					.cliente(cliente2)
+					.build();
+			domicilioRepository.save(domicilio2);
+			LocalTime horaEspecifica1 = LocalTime.of(22, 30, 0);
+			Pedido pedido2 = Pedido.builder()
+					.cliente(cliente2)
+					.domicilioEntrega(domicilio1)
+					.estado(EstadoPedido.PAGADO)
+					.tipoEnvio(TipoEnvio.DELIVERY)
+					.fechaAlta(LocalDateTime.now())
+					.totalCosto(new BigDecimal(1000))
+					.fechaPedido(LocalDate.of(2023, 10, 10))
+					.horaEstimadaFinalizacion(horaEspecifica)
+					.build();
+			pedidoRepository.save(pedido2);
+			DetallePedido detalle2 = DetallePedido.builder()
+					.cantidad(4)
+					.articuloManufacturado(Cocacola)
+					.pedido(pedido1)
+					.build();
+			detallePedidoRepository.save(detalle2);
+			Pedido pedido3 = Pedido.builder()
+					.cliente(cliente2)
+					.domicilioEntrega(domicilio1)
+					.estado(EstadoPedido.PAGADO)
+					.tipoEnvio(TipoEnvio.DELIVERY)
+					.totalCosto(new BigDecimal(4000))
+					.fechaPedido(LocalDate.of(2023, 10, 10))
+					.fechaAlta(LocalDateTime.now())
+					.horaEstimadaFinalizacion(horaEspecifica)
+					.build();
+			pedidoRepository.save(pedido3);
+			DetallePedido detalle3 = DetallePedido.builder()
+					.cantidad(4)
+					.articuloManufacturado(Cocacola)
+					.pedido(pedido1)
+					.build();
+			detallePedidoRepository.save(detalle3);
 
 
 		};

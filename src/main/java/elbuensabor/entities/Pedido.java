@@ -24,7 +24,7 @@ public class Pedido extends Base{
     @NotNull
     @Column(name = "fecha_pedido")
 
-    private Date fechaPedido;
+    private LocalDate fechaPedido;
 
     @NotNull
     @Column(name = "hora_estimada_finalizacion")

@@ -25,7 +25,7 @@ public interface ClienteRepository extends BaseRepository<Cliente,Long> {
     List<ClienteDTO> filtroPorPedidos();
     //Ordenar cliente de mayor a menos segun su importe total
     @Query(
-            value = "SELECT c.nombre, C.apellido, SUM(p.total_costo) AS importe_total " +
+            value = "SELECT c.nombre, C.apellido, SUM(p.total) AS importe_total " +
                     "FROM cliente c " +
                     "LEFT JOIN pedido p ON c.id = p.id_cliente " +
                     "GROUP BY c.id " +
@@ -48,7 +48,7 @@ public interface ClienteRepository extends BaseRepository<Cliente,Long> {
     List<ClienteDTO> filtroPorPedidosFecha(@Param("filtro1") Date filtro1, @Param("filtro2") Date filtro2);
     //Ordenar cliente de mayot a menor entre 2 fechas segun su Importe de pedidos
     @Query(
-            value = "SELECT c.nombre, C.apellido, SUM(p.total_costo) AS importe_total " +
+            value = "SELECT c.nombre, C.apellido, SUM(p.total) AS importe_total " +
                     "FROM cliente c " +
                     "LEFT JOIN pedido p ON c.id = p.id_cliente " +
                     "WHERE " +

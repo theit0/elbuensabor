@@ -1,5 +1,6 @@
 package elbuensabor.repositories;
 
+import elbuensabor.DTO.MovimientosMonetariosDTO;
 import elbuensabor.entities.Pedido;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -22,4 +23,13 @@ public interface PedidoRepository extends BaseRepository<Pedido,Long>{
             nativeQuery = true
     )
     List<Pedido> BusquedaPedidoAConfirmar();
+    @Query(
+            value ="SELECT "+
+            "SUM(TOTAL) AS total_ingresos, "+
+            "SUM(TOTAL_COSTO) AS total_costos, "+
+            "SUM(TOTAL - TOTAL_COSTO) AS diferencia "+
+            "FROM pedido",
+            nativeQuery = true
+    )
+    MovimientosMonetariosDTO MovimientoMonetario();
 }

@@ -1,5 +1,6 @@
 package elbuensabor.services;
 
+import elbuensabor.DTO.MovimientosMonetariosDTO;
 import elbuensabor.entities.Pedido;
 import elbuensabor.entities.Usuario;
 import elbuensabor.repositories.BaseRepository;
@@ -11,9 +12,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements PedidoService{
+public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements PedidoService {
     @Autowired
     PedidoRepository pedidoRepository;
+
     public PedidoServiceImpl(BaseRepository<Pedido, Long> baseRepository, PedidoRepository pedidoServiceRepository) {
         super(baseRepository);
     }
@@ -23,8 +25,7 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
         try {
             List<Pedido> pedidos = pedidoRepository.BusquedaPedidoPorEstado(filtro);
             return pedidos;
-        }
-         catch (Exception e) {
+        } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
@@ -35,11 +36,20 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
         try {
             List<Pedido> pedidos = pedidoRepository.BusquedaPedidoAConfirmar();
             return pedidos;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
 
+    @Override
+    public MovimientosMonetariosDTO MovimientoMonetario() throws Exception {
+        try {
+            MovimientosMonetariosDTO movimientos = pedidoRepository.MovimientoMonetario();
+            return movimientos;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
 
+
+    }
 }

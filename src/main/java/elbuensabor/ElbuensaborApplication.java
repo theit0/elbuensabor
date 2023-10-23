@@ -233,6 +233,7 @@ public class ElbuensaborApplication {
 					.estado(EstadoPedido.PAGADO)
 					.tipoEnvio(TipoEnvio.DELIVERY)
 					.totalCosto(new BigDecimal(8000))
+					.total(new BigDecimal(16000))
 					.fechaPedido(LocalDate.of(2023, 10, 1))
 					.fechaAlta(LocalDateTime.now())
 					.horaEstimadaFinalizacion(horaEspecifica)
@@ -288,6 +289,7 @@ public class ElbuensaborApplication {
 					.tipoEnvio(TipoEnvio.DELIVERY)
 					.fechaAlta(LocalDateTime.now())
 					.totalCosto(new BigDecimal(1000))
+					.total(new BigDecimal(2000))
 					.fechaPedido(LocalDate.of(2023, 10, 10))
 					.horaEstimadaFinalizacion(horaEspecifica)
 					.build();
@@ -304,6 +306,7 @@ public class ElbuensaborApplication {
 					.estado(EstadoPedido.A_CONFIRMAR)
 					.tipoEnvio(TipoEnvio.DELIVERY)
 					.totalCosto(new BigDecimal(4000))
+					.total(new BigDecimal(8000))
 					.fechaPedido(LocalDate.of(2023, 10, 10))
 					.fechaAlta(LocalDateTime.now())
 					.horaEstimadaFinalizacion(horaEspecifica)

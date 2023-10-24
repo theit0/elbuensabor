@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/v1/pedidos")
@@ -37,6 +39,16 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
     public ResponseEntity<?> MovimientoMonetarios() {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.MovimientoMonetario());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" + e.getMessage() + "\"}"));
+
+        }
+
+    }
+    @GetMapping("/MovimientosMonetariosFecha")
+    public ResponseEntity<?> MovimientoMonetariosFecha(@RequestParam Date filtro1, @RequestParam Date filtro2) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.MovimientoMonetarioFecha(filtro1,filtro2));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" + e.getMessage() + "\"}"));
 

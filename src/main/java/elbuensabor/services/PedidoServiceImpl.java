@@ -6,9 +6,12 @@ import elbuensabor.entities.Usuario;
 import elbuensabor.repositories.BaseRepository;
 import elbuensabor.repositories.PedidoRepository;
 import elbuensabor.repositories.UsuarioRepository;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -51,5 +54,15 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
         }
 
 
+    }
+    @SneakyThrows
+    @Override
+    public MovimientosMonetariosDTO MovimientoMonetarioFecha(Date filtro1,Date filtro2){
+        try {
+            MovimientosMonetariosDTO movimientos = pedidoRepository.MovimientoMonetarioFecha(filtro1,filtro2);
+            return movimientos;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
 }

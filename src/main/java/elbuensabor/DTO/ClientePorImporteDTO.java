@@ -9,7 +9,7 @@ import jakarta.persistence.SqlResultSetMapping;
         name="filtroPorPedidos",
         entities = {
                 @EntityResult(
-                        entityClass = ClienteDTO.class,
+                        entityClass = ClientePorImporteDTO.class,
                         fields = {
                                 @FieldResult(name="apellido", column = "apellido"),
                                 @FieldResult(name="nombre",column = "nombre"),

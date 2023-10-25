@@ -14,8 +14,12 @@ import java.util.Date;
 @Setter
 @Builder
 public class Usuario extends Base{
+
+
     @Column(name = "asusername")
     private String asusername;
+
+
     @Column(name = "auth0_id")
     private int auth0_id;
     @Column(name = "fechaAlta")

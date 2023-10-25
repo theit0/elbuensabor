@@ -1,8 +1,8 @@
 package elbuensabor.repositories;
 
 
-import DTO.ClienteDTO;
-import DTO.ClientePorImporteDTO;
+import elbuensabor.DTO.ClienteDTO;
+import elbuensabor.DTO.ClientePorImporteDTO;
 import elbuensabor.entities.Cliente;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

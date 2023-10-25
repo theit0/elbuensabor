@@ -1,4 +1,4 @@
-package DTO;
+package elbuensabor.DTO;
 
 import jakarta.persistence.EntityResult;
 import jakarta.persistence.FieldResult;
@@ -8,24 +8,20 @@ import jakarta.persistence.SqlResultSetMapping;
         name="filtroPorPedidos",
         entities = {
                 @EntityResult(
-                        entityClass = ClienteDTO.class,
+                        entityClass = ClientePorImporteDTO.class,
                         fields = {
                                 @FieldResult(name="apellido", column = "apellido"),
                                 @FieldResult(name="nombre",column = "nombre"),
-                                @FieldResult(name ="cantidad_pedidos", column = "cantidad_pedidos")
+                                @FieldResult(name="importe_total",column = "importe_total"),
 
 
                         }
                 )
         }
 )
-
-public interface ClienteDTO {
-
+public interface ClientePorImporteDTO {
     String getnombre();
     String getapellido();
-    Integer getcantidad_pedidos();
-
+    Integer getimporte_total();
 
 }
-

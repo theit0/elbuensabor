@@ -1,7 +1,7 @@
 package elbuensabor.services;
 
-import DTO.ClienteDTO;
-import DTO.ClientePorImporteDTO;
+import elbuensabor.DTO.ClienteDTO;
+import elbuensabor.DTO.ClientePorImporteDTO;
 import elbuensabor.entities.Cliente;
 
 import java.util.Date;

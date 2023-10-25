@@ -1,8 +1,8 @@
 package elbuensabor.repositories;
 
-import DTO.MostrarPedidoDTO;
-import DTO.MovimientosMonetariosDTO;
-import DTO.PedidoDTO;
+import elbuensabor.DTO.MostrarPedidoDTO;
+import elbuensabor.DTO.MovimientosMonetariosDTO;
+import elbuensabor.DTO.PedidoDTO;
 import elbuensabor.entities.Pedido;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

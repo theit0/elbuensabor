@@ -342,7 +342,31 @@ public class ElbuensaborApplication {
 					.unidadMedida(null)
 					.build();
 			articuloInsumoRepository.save(articulo2);
-
+			Pedido pedido5 = Pedido.builder()
+					.cliente(cliente2)
+					.domicilioEntrega(domicilio1)
+					.estado(EstadoPedido.PAGADO)
+					.tipoEnvio(TipoEnvio.DELIVERY)
+					.fechaAlta(LocalDateTime.now())
+					.totalCosto(new BigDecimal(1000))
+					.total(new BigDecimal(2000))
+					.fechaPedido(LocalDate.of(2023, 10, 10))
+					.horaEstimadaFinalizacion(horaEspecifica)
+					.build();
+			pedidoRepository.save(pedido5);
+			Factura factura2 = Factura.builder()
+					.fechaAlta(LocalDateTime.of(2023,02,12,12,25))
+					.fechaFacturacion(LocalDateTime.now())
+					.formaPago(FormaPago.EFECTIVO)
+					.pedido(pedido5)
+					.build();
+			facturaRepository.save(factura2);
+			DetalleFactura detallefac2 = DetalleFactura.builder()
+					.cantidad(10)
+					.articuloManufacturado(Hamburguesa)
+					.factura(factura2)
+					.build();
+			detalleFacturaRepository.save(detallefac2);
 
 		};
 	}

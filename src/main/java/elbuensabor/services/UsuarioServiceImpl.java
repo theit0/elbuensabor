@@ -1,9 +1,7 @@
 package elbuensabor.services;
 
-import DTO.ClientePorImporteDTO;
 import elbuensabor.entities.Usuario;
 import elbuensabor.repositories.BaseRepository;
-import elbuensabor.repositories.ClienteRepository;
 import elbuensabor.repositories.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

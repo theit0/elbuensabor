@@ -1,6 +1,6 @@
 package elbuensabor.services;
 
-import DTO.ArticuloInsumoDTO;
+import elbuensabor.DTO.ArticuloInsumoDTO;
 import elbuensabor.entities.ArticuloInsumo;
 import elbuensabor.repositories.ArticuloInsumoRepository;
 import elbuensabor.repositories.BaseRepository;

@@ -1,6 +1,8 @@
 package elbuensabor.repositories;
 
 import elbuensabor.entities.Factura;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -23,5 +25,5 @@ public interface FacturaRepository extends BaseRepository<Factura,Long>{
                     "WHERE ID_Pedido =:id ",
             nativeQuery = true
     )
-    Factura FacturarPedido(@Param("id")Long id);
+    Factura FacturarPedido(@Param("id") Long id);
 }

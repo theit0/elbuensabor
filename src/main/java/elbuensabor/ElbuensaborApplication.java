@@ -51,7 +51,7 @@ public class ElbuensaborApplication {
 	@Bean
 	CommandLineRunner init(RubroArticuloRepository rubroRepository, ArticuloManufacturadoRepository articuloManufacturadoRepository, ClienteRepository clienteRepository, PedidoRepository pedidoRepository) {
 		return args -> {
-			/*UnidadMedida mililitros = UnidadMedida.builder()
+			UnidadMedida mililitros = UnidadMedida.builder()
 					.abreviatura("ml")
 					.denominacion("Milimetros")
 					.fechaAlta(LocalDateTime.now())
@@ -367,7 +367,7 @@ public class ElbuensaborApplication {
 					.factura(factura2)
 					.build();
 			detalleFacturaRepository.save(detallefac2);
-*/
+
 		};
 	}
 }

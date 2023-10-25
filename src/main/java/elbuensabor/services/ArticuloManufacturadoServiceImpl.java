@@ -1,11 +1,14 @@
 package elbuensabor.services;
 
+import elbuensabor.DTO.ArticuloManufacturadoDTO;
 import elbuensabor.entities.ArticuloManufacturado;
 import elbuensabor.repositories.ArticuloManufacturadoRepository;
 import elbuensabor.repositories.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -48,5 +51,25 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
         }
     }
 
+    @Override
+    @Transactional
+    public List<ArticuloManufacturadoDTO> filtradoPorProductoVendido() throws Exception {
+        try {
+            List<ArticuloManufacturadoDTO> productos = articuloManufacturadoRepository.filtroPorProductoVendido();
+            return productos;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<ArticuloManufacturadoDTO> filtradoPorProductoVendidoPorFecha(Date filtro1, Date filtro2) throws Exception {
+        try {
+            List<ArticuloManufacturadoDTO> productos = articuloManufacturadoRepository.filtradoPorProductoVendidoPorFecha(filtro1,filtro2);
+            return productos;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 
 }

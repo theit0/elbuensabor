@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/v1/ArticuloManufacturado")
@@ -31,6 +33,24 @@ public class ArticuloManufacturadoController extends BaseControllerImpl<Articulo
     public ResponseEntity<?> filtradoPorPrecioAsc(){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.filtradoPorPrecioAsc());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+        }
+    }
+
+    @GetMapping("/rankingProductos")
+    public ResponseEntity<?> rankingProductos(){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.filtradoPorProductoVendido());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+        }
+    }
+
+    @GetMapping("/rankingProductosPorFecha")
+    public ResponseEntity<?> rankingProductosPorFecha(@RequestParam Date filtro1,@RequestParam Date filtro2){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.filtradoPorProductoVendidoPorFecha(filtro1,filtro2));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
         }

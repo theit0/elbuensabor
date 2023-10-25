@@ -239,6 +239,18 @@ public class ElbuensaborApplication {
 					.horaEstimadaFinalizacion(horaEspecifica)
 					.build();
 			pedidoRepository.save(pedido1);
+			Pedido pedido2 = Pedido.builder()
+					.cliente(cliente1)
+					.domicilioEntrega(domicilio1)
+					.estado(EstadoPedido.PAGADO)
+					.tipoEnvio(TipoEnvio.DELIVERY)
+					.totalCosto(new BigDecimal(8000))
+					.total(new BigDecimal(16000))
+					.fechaPedido(LocalDate.of(2023, 10, 1))
+					.fechaAlta(LocalDateTime.now())
+					.horaEstimadaFinalizacion(horaEspecifica)
+					.build();
+			pedidoRepository.save(pedido2);
 			DetallePedido detalle1 = DetallePedido.builder()
 					.cantidad(4)
 					.articuloManufacturado(Cocacola)
@@ -272,17 +284,7 @@ public class ElbuensaborApplication {
 					.usuario(usuario2)
 					.build();
 			clienteRepository.save(cliente2);
-			Domicilio domicilio2 = Domicilio.builder()
-					.calle("la plata")
-					.codPostal(5507)
-					.fechaAlta(LocalDateTime.now())
-					.localidad("vistalba")
-					.numero(444)
-					.cliente(cliente2)
-					.build();
-			domicilioRepository.save(domicilio2);
-			LocalTime horaEspecifica1 = LocalTime.of(22, 30, 0);
-			Pedido pedido2 = Pedido.builder()
+			Pedido pedido5 = Pedido.builder()
 					.cliente(cliente2)
 					.domicilioEntrega(domicilio1)
 					.estado(EstadoPedido.PAGADO)
@@ -293,7 +295,35 @@ public class ElbuensaborApplication {
 					.fechaPedido(LocalDate.of(2023, 10, 10))
 					.horaEstimadaFinalizacion(horaEspecifica)
 					.build();
-			pedidoRepository.save(pedido2);
+			pedidoRepository.save(pedido5);
+			Factura factura2 = Factura.builder()
+					.fechaAlta(LocalDateTime.of(2023,02,12,12,25))
+					.fechaFacturacion(LocalDateTime.now())
+					.formaPago(FormaPago.EFECTIVO)
+					.pedido(pedido5)
+					.build();
+			facturaRepository.save(factura2);
+			DetalleFactura detallefac2 = DetalleFactura.builder()
+					.cantidad(10)
+					.articuloManufacturado(Hamburguesa)
+					.factura(factura2)
+					.build();
+			detalleFacturaRepository.save(detallefac2);
+
+
+
+
+			Domicilio domicilio2 = Domicilio.builder()
+					.calle("la plata")
+					.codPostal(5507)
+					.fechaAlta(LocalDateTime.now())
+					.localidad("vistalba")
+					.numero(444)
+					.cliente(cliente2)
+					.build();
+			domicilioRepository.save(domicilio2);
+			LocalTime horaEspecifica1 = LocalTime.of(22, 30, 0);
+
 			DetallePedido detalle2 = DetallePedido.builder()
 					.cantidad(4)
 					.articuloManufacturado(Cocacola)

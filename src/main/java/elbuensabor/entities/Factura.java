@@ -8,6 +8,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "factura")
@@ -56,4 +57,5 @@ public class Factura extends Base{
     @OneToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_pedido")
     private Pedido pedido;
+
 }

@@ -1,8 +1,7 @@
 package elbuensabor.repositories;
 
-import elbuensabor.DTO.ArticuloInsumoDTO;
+import DTO.ArticuloInsumoDTO;
 import elbuensabor.entities.ArticuloInsumo;
-import elbuensabor.entities.ArticuloManufacturado;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;

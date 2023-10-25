@@ -51,7 +51,7 @@ public class ElbuensaborApplication {
 	@Bean
 	CommandLineRunner init(RubroArticuloRepository rubroRepository, ArticuloManufacturadoRepository articuloManufacturadoRepository, ClienteRepository clienteRepository, PedidoRepository pedidoRepository) {
 		return args -> {
-			UnidadMedida mililitros = UnidadMedida.builder()
+			/*UnidadMedida mililitros = UnidadMedida.builder()
 					.abreviatura("ml")
 					.denominacion("Milimetros")
 					.fechaAlta(LocalDateTime.now())
@@ -230,7 +230,7 @@ public class ElbuensaborApplication {
 			Pedido pedido1 = Pedido.builder()
 					.cliente(cliente1)
 					.domicilioEntrega(domicilio1)
-					.estado(EstadoPedido.PAGADO)
+					.estado(EstadoPedido.PENDIENTE_ENTREGA)
 					.tipoEnvio(TipoEnvio.DELIVERY)
 					.totalCosto(new BigDecimal(8000))
 					.total(new BigDecimal(16000))
@@ -331,6 +331,17 @@ public class ElbuensaborApplication {
 					.unidadMedida(null)
 					.build();
 					articuloInsumoRepository.save(articulo1);
+			ArticuloInsumo articulo2 = ArticuloInsumo.builder()
+					.rubroArticulo(null)
+					.denominacion("Lechuga")
+					.fechaBaja(null)
+					.fechaAlta(LocalDateTime.now())
+					.precioCompra(new BigDecimal(1200))
+					.stockActual(new BigDecimal(2))
+					.stockMinimo(new BigDecimal(20))
+					.unidadMedida(null)
+					.build();
+			articuloInsumoRepository.save(articulo2);*/
 
 
 		};

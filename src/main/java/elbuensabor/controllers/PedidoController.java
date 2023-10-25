@@ -87,4 +87,13 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
     }
+    @GetMapping("/mostrarEstadoPedido")
+    public ResponseEntity<?> mostrarEstadoPedido(Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.mostrarEstadoPedido(id));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" + e.getMessage() + "\"}"));
+
+        }
+    }
 }

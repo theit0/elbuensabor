@@ -1,8 +1,8 @@
 package elbuensabor.repositories;
 
 
-import elbuensabor.DTO.ClienteDTO;
-import elbuensabor.DTO.ClientePorImporteDTO;
+import DTO.ClienteDTO;
+import DTO.ClientePorImporteDTO;
 import elbuensabor.entities.Cliente;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -59,4 +59,9 @@ public interface ClienteRepository extends BaseRepository<Cliente,Long> {
             nativeQuery = true
     )
     List<ClientePorImporteDTO>filtroPorImporteFechas(@Param("filtro1") Date filtro1, @Param("filtro2") Date filtro2);
+    @Query(
+            value= "SELECT * FROM cliente WHERE cliente.nombre LIKE %:filtro% OR cliente.apellido LIKE %:filtro%",
+            nativeQuery = true
+    )
+     public List<Cliente> BuscarPorNyA(@Param("filtro")String filtro);
 }

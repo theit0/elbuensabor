@@ -1,7 +1,7 @@
 package elbuensabor.services;
 
-import elbuensabor.DTO.ClienteDTO;
-import elbuensabor.DTO.ClientePorImporteDTO;
+import DTO.ClienteDTO;
+import DTO.ClientePorImporteDTO;
 import elbuensabor.entities.Cliente;
 import elbuensabor.repositories.BaseRepository;
 import elbuensabor.repositories.ClienteRepository;
@@ -62,6 +62,16 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente,Long> implements
     public List<ClientePorImporteDTO> filtradoPorImporteFechas(Date filtro1, Date filtro2) throws Exception {
         try {
             List<ClientePorImporteDTO> clientes = clienteRepository.filtroPorImporteFechas(filtro1, filtro2);
+            return clientes;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Cliente> BuscarPorNyA(String filtro) throws Exception {
+        try {
+            List<Cliente> clientes = clienteRepository.BuscarPorNyA(filtro);
             return clientes;
         } catch (Exception e) {
             throw new Exception(e.getMessage());

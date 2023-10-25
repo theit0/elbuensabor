@@ -1,7 +1,8 @@
 package elbuensabor.repositories;
 
-import elbuensabor.DTO.MovimientosMonetariosDTO;
-import elbuensabor.DTO.PedidoDTO;
+import DTO.MostrarPedidoDTO;
+import DTO.MovimientosMonetariosDTO;
+import DTO.PedidoDTO;
 import elbuensabor.entities.Pedido;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -76,5 +77,29 @@ public interface PedidoRepository extends BaseRepository<Pedido,Long> {
             nativeQuery = true
     )
     void actulizarEstadoEntregado(@Param("id") Long id);
+
+    //Mostrar pedido al cliente con el tiempo de espera
+
+    @Query(
+            value="SELECT "+
+            "MAX(am.tiempo_estimado_cocina) AS tiempo_maximo_articulo, "+
+            "IFNULL(MAX(tiempo_maximo_articulo), 0) AS tiempo_maximo_pedido_en_cocina, "+
+            "CASE "+
+    "WHEN pedido.TIPO_ENVIO = DELIVERY THEN 10 "+
+    "ELSE 0 "+
+    "END AS tiempo_entrega_delivery "+
+            "FROM "+
+    "detalle_pedido AS dp "+
+    "JOIN articulo_manufacturado AS am ON dp.id_articulo_manufacturado = am.id "+
+    "LEFT JOIN ( "+
+                    "SELECT  MAX(tiempo_estimado_cocina) AS tiempo_estimado_pedido_en_cocina "+
+    "FROM detalle_pedido "+
+    "WHERE PEDIDO.ESTADO = PREPARACION "+
+    "GROUP BY pedido.id "+
+  ") AS pedidos_en_cocina ON dp.id_pedido = pedidos_en_cocina.id "+
+    "WHERE dp.id_pedido = :id",
+            nativeQuery = true
+    )
+    MostrarPedidoDTO mostrarEstadoPedido(@Param("id")Long id);
 
 }

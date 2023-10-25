@@ -1,15 +1,13 @@
 package elbuensabor.services;
 
-import elbuensabor.DTO.MovimientosMonetariosDTO;
-import elbuensabor.DTO.PedidoDTO;
+import DTO.MostrarPedidoDTO;
+import DTO.MovimientosMonetariosDTO;
+import DTO.PedidoDTO;
 import elbuensabor.entities.Pedido;
-import elbuensabor.entities.Usuario;
 import elbuensabor.repositories.BaseRepository;
 import elbuensabor.repositories.PedidoRepository;
-import elbuensabor.repositories.UsuarioRepository;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -95,4 +93,16 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
             throw new Exception(e.getMessage());
         }
     }
-}
+
+    @Override
+    public MostrarPedidoDTO mostrarEstadoPedido(Long id) throws Exception {
+       try {
+           MostrarPedidoDTO pedido = pedidoRepository.mostrarEstadoPedido(id);
+           return pedido;
+       }catch (Exception e) {
+           throw new Exception(e.getMessage());
+       }
+    }
+
+    }
+

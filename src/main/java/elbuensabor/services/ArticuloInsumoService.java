@@ -1,8 +1,7 @@
 package elbuensabor.services;
 
-import elbuensabor.DTO.ArticuloInsumoDTO;
+import DTO.ArticuloInsumoDTO;
 import elbuensabor.entities.ArticuloInsumo;
-import elbuensabor.entities.ArticuloManufacturado;
 
 import java.math.BigDecimal;
 import java.util.List;

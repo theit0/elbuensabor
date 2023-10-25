@@ -1,9 +1,9 @@
 package elbuensabor.services;
 
-import elbuensabor.DTO.MovimientosMonetariosDTO;
-import elbuensabor.DTO.PedidoDTO;
+import DTO.MostrarPedidoDTO;
+import DTO.MovimientosMonetariosDTO;
+import DTO.PedidoDTO;
 import elbuensabor.entities.Pedido;
-import org.springframework.data.repository.query.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -18,6 +18,7 @@ public interface PedidoService extends BaseService<Pedido,Long>{
 
     PedidoDTO mostrarDetallePedido(Long id) throws Exception;
     void actulizarEstadoEntregado(Long id) throws Exception;
+    MostrarPedidoDTO mostrarEstadoPedido(Long id) throws Exception;
 
 
 }

@@ -1,4 +1,4 @@
-package elbuensabor.DTO;
+package DTO;
 import jakarta.persistence.EntityResult;
 import jakarta.persistence.FieldResult;
 import jakarta.persistence.SqlResultSetMapping;

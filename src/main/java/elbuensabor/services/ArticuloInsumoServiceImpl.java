@@ -1,8 +1,7 @@
 package elbuensabor.services;
 
-import elbuensabor.DTO.ArticuloInsumoDTO;
+import DTO.ArticuloInsumoDTO;
 import elbuensabor.entities.ArticuloInsumo;
-import elbuensabor.entities.ArticuloManufacturado;
 import elbuensabor.repositories.ArticuloInsumoRepository;
 import elbuensabor.repositories.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;

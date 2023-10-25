@@ -55,4 +55,36 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
         }
 
     }
+
+
+    @GetMapping("/buscarPedidoEnDelivery")
+    public ResponseEntity<?> buscarPedidoEnDelivery(){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.buscarPedidoEnDelivery());
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
+
+    @GetMapping("/mostrarDetallePedido")
+    public ResponseEntity<?> mostrarDetallePedido(@RequestParam Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.mostrarDetallePedido(id));
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
+
+    @PutMapping("/actulizarEstadoEntregado")
+    public ResponseEntity<?> actulizarEstadoEntregado(Long id){
+        try {
+            servicio.actulizarEstadoEntregado(id);
+            return ResponseEntity.status(HttpStatus.OK).body("El estado ha sido cambiado");
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
 }

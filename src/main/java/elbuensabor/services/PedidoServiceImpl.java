@@ -1,6 +1,7 @@
 package elbuensabor.services;
 
 import elbuensabor.DTO.MovimientosMonetariosDTO;
+import elbuensabor.DTO.PedidoDTO;
 import elbuensabor.entities.Pedido;
 import elbuensabor.entities.Usuario;
 import elbuensabor.repositories.BaseRepository;
@@ -55,12 +56,41 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
 
 
     }
+
     @SneakyThrows
     @Override
-    public MovimientosMonetariosDTO MovimientoMonetarioFecha(Date filtro1,Date filtro2){
+    public MovimientosMonetariosDTO MovimientoMonetarioFecha(Date filtro1, Date filtro2) {
         try {
-            MovimientosMonetariosDTO movimientos = pedidoRepository.MovimientoMonetarioFecha(filtro1,filtro2);
+            MovimientosMonetariosDTO movimientos = pedidoRepository.MovimientoMonetarioFecha(filtro1, filtro2);
             return movimientos;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Pedido> buscarPedidoEnDelivery() throws Exception {
+        try {
+            return pedidoRepository.buscarPedidoEnDelivery();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public PedidoDTO mostrarDetallePedido(Long id) throws Exception {
+        try {
+           return pedidoRepository.mostrarDetallePedido(id);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+
+    @Override
+    public void actulizarEstadoEntregado(Long id) throws Exception {
+        try {
+            pedidoRepository.actulizarEstadoEntregado(id);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }

@@ -1,11 +1,14 @@
 package elbuensabor.repositories;
 
+import elbuensabor.DTO.ArticuloInsumoDTO;
 import elbuensabor.entities.ArticuloInsumo;
 import elbuensabor.entities.ArticuloManufacturado;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -25,4 +28,14 @@ public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,
             nativeQuery = true
     )
     List<ArticuloInsumo> busquedaPorAlta();
+
+    @Query(
+            value = "SELECT a.denominacion, u.denominacion, a.stock_minimo, a.stock_actual, (a.stock_actual - a.stock_minimo) AS diferencia " +
+                    "FROM Articulo_Insumo a " +
+                    "LEFT JOIN Unidad_Medida u ON a.id_unidad_medida = u.ID " +
+                    "WHERE a.stock_actual <= (a.stock_minimo * :porcent)",
+            nativeQuery = true
+    )
+    List<ArticuloInsumoDTO> mostrarArticulosBajosDeStock(@RequestParam("porcent") BigDecimal porcent);
+
 }

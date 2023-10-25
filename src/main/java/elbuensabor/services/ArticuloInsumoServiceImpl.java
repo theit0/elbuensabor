@@ -1,5 +1,6 @@
 package elbuensabor.services;
 
+import elbuensabor.DTO.ArticuloInsumoDTO;
 import elbuensabor.entities.ArticuloInsumo;
 import elbuensabor.entities.ArticuloManufacturado;
 import elbuensabor.repositories.ArticuloInsumoRepository;
@@ -7,6 +8,7 @@ import elbuensabor.repositories.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -33,6 +35,16 @@ public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo,Lo
     public List<ArticuloInsumo> busquedaPorAlta() throws Exception {
         try {
             List<ArticuloInsumo> articuloInsumos = articuloInsumoRepository.busquedaPorAlta();
+            return articuloInsumos;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<ArticuloInsumoDTO> mostrarArticulosBajosDeStock(BigDecimal porcent) throws Exception{
+        try {
+            List<ArticuloInsumoDTO> articuloInsumos = articuloInsumoRepository.mostrarArticulosBajosDeStock(porcent);
             return articuloInsumos;
         } catch (Exception e) {
             throw new Exception(e.getMessage());

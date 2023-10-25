@@ -75,13 +75,13 @@ public class ElbuensaborApplication {
 			RubroArticulo bebidasinalcohol1 = RubroArticulo.builder()
 					.denominacion("bebidas sin alcohol")
 					.fechaAlta(LocalDateTime.now())
-					//.rubroPadre(bebidas)
+					.rubroPadre(bebidas)
 					.build();
 			rubroArticuloRepository.save(bebidasinalcohol1);
 			RubroArticulo bebidaconalcohol1 = RubroArticulo.builder()
 					.denominacion("bebidas con alcohol")
 					.fechaAlta(LocalDateTime.now())
-					//.rubroPadre(bebidas)
+					.rubroPadre(bebidas)
 					.build();
 			rubroArticuloRepository.save(bebidaconalcohol1);
 

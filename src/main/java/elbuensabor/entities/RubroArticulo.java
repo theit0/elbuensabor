@@ -15,9 +15,9 @@ import java.util.List;
 @Setter
 @Builder
 public class RubroArticulo extends Base{
-   // @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
-    //@JoinColumn(name = "id_rubro_padre")
-    //private RubroArticulo rubroPadre;
+    @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_rubro_padre")
+    private RubroArticulo rubroPadre;
 
     //@OneToMany(mappedBy = "rubroPadre")
     //private List<RubroArticulo> subRubros;

@@ -17,7 +17,7 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping(value = "/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request)
+    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) throws Exception
     {
         return ResponseEntity.ok(authService.login(request));
     }
@@ -26,5 +26,15 @@ public class AuthController {
     public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request)
     {
         return ResponseEntity.ok(authService.register(request));
+    }
+    @PostMapping(value = "/registerEmpleado")
+    public ResponseEntity<AuthResponse> registerEmpleado(@RequestBody RegisterRequest request)
+    {
+        return ResponseEntity.ok(authService.register(request));
+    }
+    @PostMapping(value = "/loginEmpleado")
+    public ResponseEntity<AuthResponse> loginEmpleado(@RequestBody LoginRequest request) throws Exception
+    {
+        return ResponseEntity.ok(authService.loginEmpleado(request));
     }
 }

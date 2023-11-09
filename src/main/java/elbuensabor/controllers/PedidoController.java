@@ -12,6 +12,7 @@ import java.util.Date;
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/v1/pedidos")
 public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceImpl> {
+
     @GetMapping("/busquedaPorEstado")
     public ResponseEntity<?> BusquedaPedidoPorEstado(@RequestParam String filtro) {
         try {

@@ -13,8 +13,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import elbuensabor.jwt.JwtAuthenticationFilter;
-
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -30,14 +28,42 @@ public class SecurityConfig {
     {
         return http
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(authorizeRequest ->
-                                authorizeRequest
-                                        .requestMatchers("/auth/**").permitAll()
+                .authorizeHttpRequests(authRequest ->
+                                authRequest
+                                        .requestMatchers("/auth/login").permitAll()
+                                        .requestMatchers("/auth/register").permitAll()
+                                        .requestMatchers("/auth/registerEmpleado").hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers("/auth/loginEmpleado").permitAll()
+                                        .requestMatchers(HttpMethod.PUT,"/api/v1/clientes/{id}").hasAuthority("CLIENTE")
+                                        .requestMatchers("/api/v1/clientes/**").hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers("/api/v1/ArticuloManufacturado/filtradoPorPrecioAsc").permitAll()
+                                        .requestMatchers("/api/v1/ArticuloManufacturado/filtradoPorPrecioDesc").permitAll()
+                                        .requestMatchers("/api/v1/ArticuloManufacturado/busquedaPorDenominacionA").permitAll()
+                                        .requestMatchers(HttpMethod.POST,"/api/v1/pedidos").hasAuthority("CLIENTE")
+                                        .requestMatchers("/api/v1/pedidos/busquedaPorEstado").hasAuthority("EMPLEADO")
+                                        .requestMatchers("/api/v1/pedidos/buscarPedidoEnDelivery").hasAuthority("EMPLEADO")
+                                        .requestMatchers("/api/v1/pedidos//busquedaPedidosAConfirmar").hasAuthority("EMPLEADO")
+                                        .requestMatchers("/api/v1/factura/Facturar").hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers(HttpMethod.POST,"/api/v1/rubros").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")
+                                        .requestMatchers(HttpMethod.DELETE,"/api/v1/rubros/{id}").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")
+                                        .requestMatchers(HttpMethod.PUT,"/api/v1/rubros/{id}").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")
+                                        .requestMatchers(HttpMethod.POST,"/api/v1/ArticuloManufacturado").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")
+                                        .requestMatchers(HttpMethod.DELETE,"/api/v1/ArticuloManufacturado/{id}").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")
+                                        .requestMatchers(HttpMethod.PUT,"/api/v1/ArticuloManufacturado/{id}").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")
+                                        .requestMatchers(HttpMethod.PUT,"/api/v1/ArticuloInsumo/{id}").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")
+                                        .requestMatchers("/api/v1/ArticuloInsumo/mostrarArticulosBajosDeStock").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")
+                                        .requestMatchers("api/v1/pedidos/rankingProductos").hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers("api/v1/pedidos/rankingProductosPorFecha").hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers("api/v1/clientes/filtradoPorPedidos").hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers("api/v1/clientes/filtradoPorImporte").hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers("api/v1/clientes/filtradoPorPedidosFecha").hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers("api/v1/clientes/filtradoPorImporteFecha").hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers("api/v1/pedidos/MovimientosMonetarios").hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers("api/v1/pedidos/MovimientosMonetariosFecha").hasAuthority("ADMINISTRADOR")
                                         .requestMatchers(PathRequest.toH2Console()).permitAll()
-                                        .requestMatchers("api/v1/ArticuloManufacturado").hasAuthority("CLIENTE")
 
 
-                        //.anyRequest().authenticated()
+                                        //.anyRequest().authenticated
                 )
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)) //H2
                 .sessionManagement(sessionManager-> sessionManager

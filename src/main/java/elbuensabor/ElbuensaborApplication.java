@@ -18,6 +18,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+
+import static elbuensabor.Enumerations.Rol.ADMINISTRADOR;
+import static elbuensabor.Enumerations.Rol.CLIENTE;
+
 @SpringBootApplication(exclude = {SecurityFilterAutoConfiguration.class})
 public class ElbuensaborApplication {
 
@@ -206,6 +210,8 @@ public class ElbuensaborApplication {
 			Usuario usuario1 = Usuario.builder()
 					.username("giovacirrin")
 					.fechaAlta(LocalDateTime.now())
+					.rol(ADMINISTRADOR)
+					.password("2206")
 					.build();
 			Cliente cliente1 = Cliente.builder()
 					.apellido("Cirrincione")
@@ -260,6 +266,7 @@ public class ElbuensaborApplication {
 			Usuario usuario2 = Usuario.builder()
 					.username("theoP")
 					.fechaAlta(LocalDateTime.now())
+					.rol(CLIENTE)
 					.build();
 			Cliente cliente2 = Cliente.builder()
 					.apellido("Pelegrina")

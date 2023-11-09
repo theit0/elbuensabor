@@ -11,14 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-
-@SpringBootApplication
+@SpringBootApplication(exclude = {SecurityFilterAutoConfiguration.class})
 public class ElbuensaborApplication {
 
 	@Autowired
@@ -204,8 +204,7 @@ public class ElbuensaborApplication {
 
 
 			Usuario usuario1 = Usuario.builder()
-					.asusername("giovacirrin")
-					.auth0_id(1)
+					.username("giovacirrin")
 					.fechaAlta(LocalDateTime.now())
 					.build();
 			Cliente cliente1 = Cliente.builder()
@@ -259,8 +258,7 @@ public class ElbuensaborApplication {
 					.build();
 			detalleFacturaRepository.save(detallefac1);
 			Usuario usuario2 = Usuario.builder()
-					.asusername("theoP")
-					.auth0_id(1)
+					.username("theoP")
 					.fechaAlta(LocalDateTime.now())
 					.build();
 			Cliente cliente2 = Cliente.builder()

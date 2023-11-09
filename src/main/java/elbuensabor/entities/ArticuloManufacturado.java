@@ -1,5 +1,6 @@
 package elbuensabor.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -45,6 +46,7 @@ public class ArticuloManufacturado extends Base{
 
     private Date fechaModificacion;
     @NotNull
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_rubro_articulo")
     private RubroArticulo rubroArticulo;

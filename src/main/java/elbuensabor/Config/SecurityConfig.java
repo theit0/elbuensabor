@@ -36,6 +36,8 @@ public class SecurityConfig {
                                         .requestMatchers("/auth/loginEmpleado").permitAll()
                                         .requestMatchers(HttpMethod.PUT,"/api/v1/clientes/{id}").hasAuthority("CLIENTE")
                                         .requestMatchers("/api/v1/clientes/**").hasAuthority("ADMINISTRADOR")
+                                        .requestMatchers("/api/v1/ArticuloManufacturado/**").permitAll()
+                                        .requestMatchers(HttpMethod.GET,"/api/v1/ArticuloManufacturado").permitAll()
                                         .requestMatchers("/api/v1/ArticuloManufacturado/filtradoPorPrecioAsc").permitAll()
                                         .requestMatchers("/api/v1/ArticuloManufacturado/filtradoPorPrecioDesc").permitAll()
                                         .requestMatchers("/api/v1/ArticuloManufacturado/busquedaPorDenominacionA").permitAll()
@@ -47,6 +49,7 @@ public class SecurityConfig {
                                         .requestMatchers(HttpMethod.POST,"/api/v1/rubros").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")
                                         .requestMatchers(HttpMethod.DELETE,"/api/v1/rubros/{id}").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")
                                         .requestMatchers(HttpMethod.PUT,"/api/v1/rubros/{id}").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")
+
                                         .requestMatchers(HttpMethod.POST,"/api/v1/ArticuloManufacturado").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")
                                         .requestMatchers(HttpMethod.DELETE,"/api/v1/ArticuloManufacturado/{id}").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")
                                         .requestMatchers(HttpMethod.PUT,"/api/v1/ArticuloManufacturado/{id}").hasAnyAuthority("ADMINISTRADOR","EMPLEADO")

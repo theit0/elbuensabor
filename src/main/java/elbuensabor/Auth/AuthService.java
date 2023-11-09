@@ -8,7 +8,6 @@ import elbuensabor.repositories.ClienteRepository;
 import elbuensabor.repositories.UsuarioRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -82,6 +81,7 @@ public class AuthService {
                 .build();
 
     }
+
     public AuthResponse loginEmpleado(LoginRequest request) throws Exception {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         UserDetails user = usuarioRepository.findByUsername(request.getUsername()).orElseThrow();
@@ -94,6 +94,36 @@ public class AuthService {
         String token = jwtService.getToken(user);
         return AuthResponse.builder()
                 .token(token)
+                .build();
+
+    }
+
+    public AuthResponse LoginAdmin(RegisterRequest request) throws Exception {
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+        UserDetails user = usuarioRepository.findByUsername(request.getUsername()).orElseThrow();
+        boolean isAdmin = user.getAuthorities().stream()
+                .anyMatch(authority -> "ADMINISTRADOR".equals(authority.getAuthority()));
+
+        if (!isAdmin) {
+            throw new Exception("El usuario no tiene el rol de ADMIN");
+        }
+        String token = jwtService.getToken(user);
+        return AuthResponse.builder()
+                .token(token)
+                .build();
+
+    }
+
+    public AuthResponse registerAdmin(RegisterRequest request) {
+        Usuario user = Usuario.builder()
+                .username(request.getUsername())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .rol(Rol.ADMINISTRADOR)
+                .fechaAlta(LocalDateTime.now())
+                .build();
+        usuarioRepository.save(user);
+        return AuthResponse.builder()
+                .token(jwtService.getToken(user))
                 .build();
 
     }

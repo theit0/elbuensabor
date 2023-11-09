@@ -21,7 +21,7 @@ import java.util.List;
 @Builder
 public class Usuario extends Base implements UserDetails {
 
-
+    private String password;
     @Column(name = "username")
     private String username;
 
@@ -36,17 +36,13 @@ public class Usuario extends Base implements UserDetails {
     private Date fechaModificacion;
     @Enumerated(EnumType.STRING)
     Rol rol;
-    private String password;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority((rol.name())));
     }
 
-    @Override
-    public String getPassword() {
-        return password;
-    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -68,4 +64,5 @@ public class Usuario extends Base implements UserDetails {
         return true;
     }
 
-}
+    }
+

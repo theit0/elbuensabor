@@ -37,4 +37,13 @@ public class AuthController {
     {
         return ResponseEntity.ok(authService.loginEmpleado(request));
     }
+    @PostMapping(value = "/registerAdmin")
+    public ResponseEntity<AuthResponse> registerAdmin(@RequestBody RegisterRequest request)
+    {
+        return ResponseEntity.ok(authService.registerAdmin(request));
+    }
+    @PostMapping(value = "/loginAdmin")
+    public ResponseEntity<AuthResponse> loginAdmin(@RequestBody RegisterRequest request) throws Exception {
+        return ResponseEntity.ok(authService.LoginAdmin(request));
+    }
 }

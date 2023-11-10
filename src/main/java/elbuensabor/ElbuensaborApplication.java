@@ -5,8 +5,6 @@ import elbuensabor.Enumerations.FormaPago;
 import elbuensabor.Enumerations.TipoEnvio;
 import elbuensabor.entities.*;
 import elbuensabor.repositories.*;
-import net.bytebuddy.asm.Advice;
-import org.aspectj.lang.reflect.UnlockSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,8 +17,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import static elbuensabor.Enumerations.Rol.ADMINISTRADOR;
-import static elbuensabor.Enumerations.Rol.CLIENTE;
+import static elbuensabor.entities.Rol.*;
 
 @SpringBootApplication(exclude = {SecurityFilterAutoConfiguration.class})
 public class ElbuensaborApplication {
@@ -210,7 +207,7 @@ public class ElbuensaborApplication {
 			Usuario usuario1 = Usuario.builder()
 					.username("giovacirrin")
 					.fechaAlta(LocalDateTime.now())
-					.rol(ADMINISTRADOR)
+					.rol(ADMIN)
 					.password("2206")
 					.build();
 			Cliente cliente1 = Cliente.builder()
@@ -266,7 +263,7 @@ public class ElbuensaborApplication {
 			Usuario usuario2 = Usuario.builder()
 					.username("theoP")
 					.fechaAlta(LocalDateTime.now())
-					.rol(CLIENTE)
+					.rol(CLI)
 					.build();
 			Cliente cliente2 = Cliente.builder()
 					.apellido("Pelegrina")

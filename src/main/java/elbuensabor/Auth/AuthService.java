@@ -1,6 +1,6 @@
 package elbuensabor.Auth;
 
-import elbuensabor.Enumerations.Rol;
+import elbuensabor.entities.Rol;
 import elbuensabor.entities.Cliente;
 import elbuensabor.entities.Usuario;
 import elbuensabor.jwt.JwtService;
@@ -31,7 +31,7 @@ public class AuthService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         UserDetails user = usuarioRepository.findByUsername(request.getUsername()).orElseThrow();
         boolean isCLIENTE = user.getAuthorities().stream()
-                .anyMatch(authority -> "CLIENTE".equals(authority.getAuthority()));
+                .anyMatch(authority -> "CLI".equals(authority.getAuthority()));
 
         if (!isCLIENTE) {
             throw new Exception("El usuario no tiene el rol de CLIENTE");
@@ -47,7 +47,7 @@ public class AuthService {
         Usuario user = Usuario.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .rol(Rol.CLIENTE)
+                .rol(Rol.CLI)
                 .fechaAlta(LocalDateTime.now())
                 .build();
         usuarioRepository.save(user);
@@ -72,7 +72,7 @@ public class AuthService {
         Usuario user = Usuario.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .rol(Rol.EMPLEADO)
+                .rol(Rol.EMP)
                 .fechaAlta(LocalDateTime.now())
                 .build();
         usuarioRepository.save(user);
@@ -86,7 +86,7 @@ public class AuthService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         UserDetails user = usuarioRepository.findByUsername(request.getUsername()).orElseThrow();
         boolean isEmpleado = user.getAuthorities().stream()
-                .anyMatch(authority -> "EMPLEADO".equals(authority.getAuthority()));
+                .anyMatch(authority -> "EMP".equals(authority.getAuthority()));
 
         if (!isEmpleado) {
             throw new Exception("El usuario no tiene el rol de empleado");
@@ -102,7 +102,7 @@ public class AuthService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         UserDetails user = usuarioRepository.findByUsername(request.getUsername()).orElseThrow();
         boolean isAdmin = user.getAuthorities().stream()
-                .anyMatch(authority -> "ADMINISTRADOR".equals(authority.getAuthority()));
+                .anyMatch(authority -> "ADMIN".equals(authority.getAuthority()));
 
         if (!isAdmin) {
             throw new Exception("El usuario no tiene el rol de ADMIN");
@@ -118,7 +118,7 @@ public class AuthService {
         Usuario user = Usuario.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .rol(Rol.ADMINISTRADOR)
+                .rol(Rol.ADMIN)
                 .fechaAlta(LocalDateTime.now())
                 .build();
         usuarioRepository.save(user);

@@ -1,6 +1,5 @@
 package elbuensabor.entities;
 
-import elbuensabor.Enumerations.Rol;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

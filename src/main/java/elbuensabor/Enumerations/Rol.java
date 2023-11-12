@@ -1,4 +1,4 @@
-package elbuensabor.entities;
+package elbuensabor.Enumerations;
 
 public enum Rol {
     ADMIN,

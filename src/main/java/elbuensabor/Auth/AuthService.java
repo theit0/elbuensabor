@@ -1,6 +1,6 @@
 package elbuensabor.Auth;
 
-import elbuensabor.entities.Rol;
+import elbuensabor.Enumerations.Rol;
 import elbuensabor.entities.Cliente;
 import elbuensabor.entities.Usuario;
 import elbuensabor.jwt.JwtService;

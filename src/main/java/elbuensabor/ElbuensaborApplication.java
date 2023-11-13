@@ -370,6 +370,87 @@ public class ElbuensaborApplication {
 					.build();
 			detalleFacturaRepository.save(detallefac2);
 
+
+
+
+
+
+
+			Usuario usuario3 = Usuario.builder()
+					.username("ignambro")
+					.fechaAlta(LocalDateTime.now())
+					.rol(EMP)
+					.password("2408")
+					.build();
+			Cliente cliente3 = Cliente.builder()
+					.apellido("Ambrogetti")
+					.email("prueba@gmail.com")
+					.fechaAlta(LocalDateTime.now())
+					.nombre("ignacio")
+					.telefono("2615121336")
+					.usuario(usuario3)
+					.build();
+			clienteRepository.save(cliente3);
+			Domicilio domicilio3 = Domicilio.builder()
+					.calle("chaco")
+					.codPostal(5507)
+					.fechaAlta(LocalDateTime.now())
+					.localidad("Lujan")
+					.numero(216)
+					.cliente(cliente3)
+					.build();
+			domicilioRepository.save(domicilio3);
+
+			Usuario usuario4 = Usuario.builder()
+					.username("messirve")
+					.fechaAlta(LocalDateTime.now())
+					.rol(EMP)
+					.password("1812")
+					.build();
+			Cliente cliente4 = Cliente.builder()
+					.apellido("Messi")
+					.email("messigoat@gmail.com")
+					.fechaAlta(LocalDateTime.now())
+					.nombre("Lionel")
+					.telefono("2611211447")
+					.usuario(usuario4)
+					.build();
+			clienteRepository.save(cliente4);
+			Domicilio domicilio4 = Domicilio.builder()
+					.calle("rosario")
+					.codPostal(5507)
+					.fechaAlta(LocalDateTime.now())
+					.localidad("Lujan")
+					.numero(315)
+					.cliente(cliente4)
+					.build();
+			domicilioRepository.save(domicilio4);
+
+			Usuario usuario5 = Usuario.builder()
+					.username("pedrodonna")
+					.fechaAlta(LocalDateTime.now())
+					.rol(EMP)
+					.password("0209")
+					.build();
+			Cliente cliente5 = Cliente.builder()
+					.apellido("Donnarumma")
+					.email("pedrodonna@gmail.com")
+					.fechaAlta(LocalDateTime.now())
+					.nombre("Pedro")
+					.telefono("2616121223")
+					.usuario(usuario5)
+					.build();
+			clienteRepository.save(cliente5);
+			Domicilio domicilio5 = Domicilio.builder()
+					.calle("jujuy")
+					.codPostal(5507)
+					.fechaAlta(LocalDateTime.now())
+					.localidad("Lujan")
+					.numero(8911)
+					.cliente(cliente5)
+					.build();
+			domicilioRepository.save(domicilio5);
+
 		};
 	}
 }

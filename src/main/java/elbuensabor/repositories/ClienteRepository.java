@@ -3,6 +3,7 @@ package elbuensabor.repositories;
 
 import elbuensabor.DTO.ClienteDTO;
 import elbuensabor.DTO.ClientePorImporteDTO;
+import elbuensabor.DTO.EmpleadoDTO;
 import elbuensabor.entities.Cliente;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,11 +16,11 @@ import java.util.List;
 public interface ClienteRepository extends BaseRepository<Cliente,Long> {
     //ordenar cliente de mayor a menor segun su cant de pedidos
     @Query(
-            value = "SELECT c.apellido, c.nombre, COUNT(p.id) AS cantidad_pedidos " +
+            value = "SELECT c.nombre, c.apellido, c.email, c.telefono, d.numero, d.localidad, d.calle " +
                     "FROM cliente c " +
-                    "LEFT JOIN pedido p ON c.id = p.id_cliente " +
-                    "GROUP BY c.id " +
-                    "ORDER BY cantidad_pedidos DESC",
+                    "LEFT JOIN domicilio d ON c.id = d.id_cliente " +
+                    "LEFT JOIN usuario u ON u.id = c.id_usuario " +
+                    "WHERE u.rol = 'EMP'",
             nativeQuery = true
     )
     List<ClienteDTO> filtroPorPedidos();
@@ -64,4 +65,17 @@ public interface ClienteRepository extends BaseRepository<Cliente,Long> {
             nativeQuery = true
     )
      public List<Cliente> BuscarPorNyA(@Param("filtro")String filtro);
+
+    //Buscar clientes, con rol de emmpleado
+    @Query(
+            value = "SELECT c.nombre AS nombreCli, c.apellido AS apellidoCli, c.email AS emailCli, c.telefono AS telefonoCli, " +
+                    "d.numero AS numeroCli, d.localidad AS localidadCli, d.calle AS calleCli " +
+                    "FROM cliente c " +
+                    "LEFT JOIN domicilio d ON c.id = d.fk_cliente " +
+                    "LEFT JOIN usuario u ON u.id = c.fk_usuario " +
+                    "WHERE u.rol = 'EMP'",
+            nativeQuery = true
+    )
+    public List<EmpleadoDTO> filtrarEmpleados();
+
 }

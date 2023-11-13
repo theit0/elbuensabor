@@ -2,6 +2,7 @@ package elbuensabor.services;
 
 import elbuensabor.DTO.ClienteDTO;
 import elbuensabor.DTO.ClientePorImporteDTO;
+import elbuensabor.DTO.EmpleadoDTO;
 import elbuensabor.entities.Cliente;
 import elbuensabor.repositories.BaseRepository;
 import elbuensabor.repositories.ClienteRepository;
@@ -74,6 +75,16 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente,Long> implements
             List<Cliente> clientes = clienteRepository.BuscarPorNyA(filtro);
             return clientes;
         } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public  List<EmpleadoDTO> filtrarEmpleado() throws Exception{
+        try{
+            List<EmpleadoDTO> clientes = clienteRepository.filtrarEmpleados();
+            return clientes;
+        } catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }

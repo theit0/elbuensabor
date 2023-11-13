@@ -3,8 +3,6 @@ package elbuensabor.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -16,6 +14,7 @@ import java.util.Date;
 @Setter
 @Builder
 public class Cliente extends Base {
+
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "apellido")
@@ -28,13 +27,10 @@ public class Cliente extends Base {
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
     @Column(name = "fechaAlta")
-
     private LocalDateTime fechaAlta;
     @Column(name = "fechaBaja")
-
     private Date fechaBaja;
     @Column(name = "fechaModificacion")
-
     private Date fechaModificacion;
 
 }

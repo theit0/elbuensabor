@@ -1,5 +1,6 @@
 package elbuensabor.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -15,6 +16,7 @@ import java.util.List;
 @Setter
 @Builder
 public class RubroArticulo extends Base{
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
     @JoinColumn(name = "id_rubro_padre")
     private RubroArticulo rubroPadre;

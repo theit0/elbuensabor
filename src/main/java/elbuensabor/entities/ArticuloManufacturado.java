@@ -46,7 +46,6 @@ public class ArticuloManufacturado extends Base{
 
     private Date fechaModificacion;
     @NotNull
-    @JsonIgnore
 
     @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_rubro_articulo")

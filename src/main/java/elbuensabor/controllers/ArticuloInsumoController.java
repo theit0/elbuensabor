@@ -13,6 +13,15 @@ import java.math.BigDecimal;
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/v1/ArticuloInsumo")
 public class ArticuloInsumoController extends BaseControllerImpl<ArticuloInsumo, ArticuloInsumoServiceImpl>{
+    @GetMapping("/busquedaPorAlta")
+    public ResponseEntity<?> busquedaPorAltaI(){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.busquedaPorAltaI());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+
+        }
+    }
     @GetMapping("/busquedaPorDenominacionA")
     public ResponseEntity<?> busquedaPorDenominacionA(@RequestParam String filtro){
         try {
@@ -23,15 +32,7 @@ public class ArticuloInsumoController extends BaseControllerImpl<ArticuloInsumo,
         }
     }
 
-    @GetMapping("/busquedaPorAlta")
-    public ResponseEntity<?> busquedaPorAlta(){
-        try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.busquedaPorAlta());
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
 
-        }
-    }
 
     @GetMapping("/mostrarArticulosBajosDeStock")
     public ResponseEntity<?> mostrarArticulosBajosDeStock(@RequestParam BigDecimal porcent){

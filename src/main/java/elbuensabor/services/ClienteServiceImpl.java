@@ -24,6 +24,16 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente,Long> implements
     }
 
     @Override
+    public List<Cliente> busquedaPorAltaC() throws Exception {
+        try {
+            List<Cliente> clientes = clienteRepository.busquedaPorAltaC();
+            return clientes;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
     @Transactional
     public List<ClienteDTO> filtradoPorPedidos() throws Exception {
         try {

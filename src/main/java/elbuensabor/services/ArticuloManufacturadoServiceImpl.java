@@ -20,6 +20,16 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
     }
 
     @Override
+    public List<ArticuloManufacturado> busquedaPorAlta() throws Exception {
+        try {
+            List<ArticuloManufacturado> articuloManufacturados = articuloManufacturadoRepository.busquedaPorAlta();
+            return articuloManufacturados;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
     public List<ArticuloManufacturado> busquedaPorDenominacion(String filtro) throws Exception {
         try {
             List<ArticuloManufacturado> articuloManufacturados = articuloManufacturadoRepository.busquedaPorDenominacion(filtro);

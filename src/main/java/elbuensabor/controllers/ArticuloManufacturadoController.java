@@ -12,6 +12,15 @@ import java.util.Date;
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/v1/ArticuloManufacturado")
 public class ArticuloManufacturadoController extends BaseControllerImpl<ArticuloManufacturado, ArticuloManufacturadoServiceImpl>{
+    @GetMapping("/busquedaPorAlta")
+    public ResponseEntity<?> busquedaPorAlta(){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.busquedaPorAlta());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" +e.getMessage() +"\"}"));
+
+        }
+    }
     @GetMapping("/busquedaPorDenominacion")
     public ResponseEntity<?> busquedaPorDenominacion(@RequestParam String filtro){
         try {

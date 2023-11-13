@@ -13,6 +13,12 @@ import java.util.List;
 
 @Repository
 public interface ClienteRepository extends BaseRepository<Cliente,Long> {
+    //Buscar clientes que no esten dados de Baja
+    @Query(
+            value = "SELECT * FROM cliente WHERE cliente.FECHA_BAJA IS NULL",
+            nativeQuery = true
+    )
+    List<Cliente> busquedaPorAltaC();
     //ordenar cliente de mayor a menor segun su cant de pedidos
     @Query(
             value = "SELECT c.apellido, c.nombre, COUNT(p.id) AS cantidad_pedidos " +

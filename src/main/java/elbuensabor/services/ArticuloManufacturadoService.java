@@ -7,6 +7,9 @@ import java.util.Date;
 import java.util.List;
 
 public interface ArticuloManufacturadoService extends BaseService<ArticuloManufacturado,Long>{
+
+    List<ArticuloManufacturado> busquedaPorAlta() throws Exception;
+
     List<ArticuloManufacturado> busquedaPorDenominacion(String filtro) throws Exception;
     List<ArticuloManufacturado> filtradoPorPrecioDesc() throws Exception;
     List<ArticuloManufacturado> filtradoPorPrecioAsc() throws Exception;

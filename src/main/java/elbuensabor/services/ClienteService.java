@@ -9,6 +9,7 @@ import java.util.List;
 
 
 public interface ClienteService extends BaseService<Cliente,Long> {
+    List<Cliente> busquedaPorAltaC() throws Exception;
     List<ClienteDTO> filtradoPorPedidos() throws Exception;
 
     List<ClientePorImporteDTO> filtradoPorImporte() throws Exception;

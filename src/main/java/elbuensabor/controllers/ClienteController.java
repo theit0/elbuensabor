@@ -12,6 +12,15 @@ import java.util.Date;
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/v1/clientes")
 public class ClienteController extends BaseControllerImpl<Cliente,ClienteServiceImpl> {
+    @GetMapping("/busquedaPorAltaC")
+    public ResponseEntity<?> busquedaPorAltaC() {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.busquedaPorAltaC());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\":\"" + e.getMessage() + "\"}"));
+
+        }
+    }
     @GetMapping("/filtradoPorPedidos")
     public ResponseEntity<?> filtradoPorPedidos() {
         try {

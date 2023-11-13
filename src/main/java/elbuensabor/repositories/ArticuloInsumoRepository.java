@@ -2,6 +2,7 @@ package elbuensabor.repositories;
 
 import elbuensabor.DTO.ArticuloInsumoDTO;
 import elbuensabor.entities.ArticuloInsumo;
+import elbuensabor.entities.ArticuloManufacturado;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -26,7 +27,7 @@ public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,
             value = "SELECT * FROM Articulo_Insumo WHERE Articulo_Insumo.FECHA_BAJA IS NULL",
             nativeQuery = true
     )
-    List<ArticuloInsumo> busquedaPorAlta();
+    List<ArticuloInsumo> busquedaPorAltaI();
 
     @Query(
             value = "SELECT a.denominacion, u.denominacion, a.stock_minimo, a.stock_actual, (a.stock_actual - a.stock_minimo) AS diferencia " +

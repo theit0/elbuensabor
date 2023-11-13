@@ -35,7 +35,7 @@ public class SecurityConfig {
                                 authRequest
                                         .requestMatchers(new AntPathRequestMatcher("/**")).permitAll()
                                         //.requestMatchers(new AntPathRequestMatcher("/api/v1/**")).hasRole("ADMIN")
-                                       // .requestMatchers(new AntPathRequestMatcher("/api/v1/clientes/**")).hasAnyAuthority("CLI")
+                                       // .requestMatchers(new AntPathRequestMatcher("/api/v1/clientes/**")).hasAuthority("CLI")
 
                                         .requestMatchers(PathRequest.toH2Console()).permitAll()
 

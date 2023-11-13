@@ -2,6 +2,7 @@ package elbuensabor.services;
 
 import elbuensabor.DTO.ArticuloInsumoDTO;
 import elbuensabor.entities.ArticuloInsumo;
+import elbuensabor.entities.ArticuloManufacturado;
 import elbuensabor.repositories.ArticuloInsumoRepository;
 import elbuensabor.repositories.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Service
 public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo,Long> implements ArticuloInsumoService {
+
     @Autowired
     ArticuloInsumoRepository articuloInsumoRepository;
 
@@ -31,9 +33,9 @@ public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo,Lo
     }
 
     @Override
-    public List<ArticuloInsumo> busquedaPorAlta() throws Exception {
+    public List<ArticuloInsumo> busquedaPorAltaI() throws Exception {
         try {
-            List<ArticuloInsumo> articuloInsumos = articuloInsumoRepository.busquedaPorAlta();
+            List<ArticuloInsumo> articuloInsumos = articuloInsumoRepository.busquedaPorAltaI();
             return articuloInsumos;
         } catch (Exception e) {
             throw new Exception(e.getMessage());

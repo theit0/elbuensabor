@@ -11,6 +11,12 @@ import java.util.List;
 
 @Repository
 public interface ArticuloManufacturadoRepository extends BaseRepository<ArticuloManufacturado,Long>{
+    //Get all productos dados de alta
+    @Query(
+            value = "SELECT * FROM Articulo_Manufacturado WHERE Articulo_Manufacturado.FECHA_BAJA IS NULL ",
+            nativeQuery = true
+    )
+    List<ArticuloManufacturado> busquedaPorAlta();
 
     //Filtrar articulos por su denominacion
     @Query(

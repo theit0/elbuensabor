@@ -20,7 +20,7 @@ import java.util.List;
 @Setter
 @Builder
 public class Usuario extends Base implements UserDetails {
-
+    @Column (name="password")
     private String password;
     @Column(name = "username")
     private String username;

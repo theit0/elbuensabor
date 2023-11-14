@@ -33,14 +33,40 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authRequest ->
                                 authRequest
-                                        .requestMatchers(new AntPathRequestMatcher("/**")).permitAll()
-                                        //.requestMatchers(new AntPathRequestMatcher("/api/v1/**")).hasRole("ADMIN")
-                                       // .requestMatchers(new AntPathRequestMatcher("/api/v1/clientes/**")).hasAuthority("CLI")
+                                        .requestMatchers(new AntPathRequestMatcher("/auth/registerAdmin")).permitAll()
+                                        .requestMatchers(new AntPathRequestMatcher("/auth/register")).permitAll()
+                                        .requestMatchers(new AntPathRequestMatcher("/auth/registerEmpleado")).authenticated()
+                                        .requestMatchers(new AntPathRequestMatcher("/auth/loginEmpleado")).permitAll()
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/clientes/{id}")).hasAuthority("CLI")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/clientes")).hasAuthority("ADMIN")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/ArticuloManufacturado/**")).permitAll()
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/ArticuloManufacturado")).permitAll()
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/ArticuloManufacturado/filtradoPorPrecioDesc")).hasAuthority("CLI")                                        .requestMatchers("/api/v1/ArticuloManufacturado/filtradoPorPrecioAsc").permitAll()
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/ArticuloManufacturado/filtradoPorPrecioDesc")).permitAll()
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/ArticuloManufacturado/busquedaPorDenominacionA")).permitAll()
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/pedidos")).hasAuthority("CLI")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/pedidos/busquedaPorEstado")).hasAuthority("EMP")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/pedidos/buscarPedidoEnDelivery")).hasAuthority("EMP")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/pedidos//busquedaPedidosAConfirmar")).hasAuthority("EMP")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/factura/Facturar")).hasAuthority("ADMIN")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/rubros")).hasAnyAuthority("ADMIN","EMP")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/rubros/{id}")).hasAnyAuthority("ADMIN","EMP")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/rubros/{id}")).hasAnyAuthority("ADMIN","EMP")
 
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/ArticuloManufacturado")).hasAnyAuthority("ADMIN","EMP")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/ArticuloManufacturado/{id}")).hasAnyAuthority("ADMIN","EMP")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/ArticuloManufacturado/{id}")).hasAnyAuthority("ADMIN","EMP")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/ArticuloInsumo/{id}")).hasAnyAuthority("ADMIN","EMP")
+                                        .requestMatchers(new AntPathRequestMatcher("/api/v1/ArticuloInsumo/mostrarArticulosBajosDeStock")).hasAnyAuthority("ADMIN","EMP")
+                                        .requestMatchers(new AntPathRequestMatcher("api/v1/pedidos/rankingProductos")).hasAuthority("ADMIN")
+                                        .requestMatchers(new AntPathRequestMatcher("api/v1/pedidos/rankingProductosPorFecha")).hasAuthority("ADMIN")
+                                        .requestMatchers(new AntPathRequestMatcher("api/v1/clientes/filtradoPorPedidos")).hasAuthority("ADMIN")
+                                        .requestMatchers(new AntPathRequestMatcher("api/v1/clientes/filtradoPorImporte")).hasAuthority("ADMIN")
+                                        .requestMatchers(new AntPathRequestMatcher("api/v1/clientes/filtradoPorPedidosFecha")).hasAuthority("ADMIN")
+                                        .requestMatchers(new AntPathRequestMatcher("api/v1/clientes/filtradoPorImporteFecha")).hasAuthority("ADMIN")
+                                        .requestMatchers(new AntPathRequestMatcher("api/v1/pedidos/MovimientosMonetarios")).hasAuthority("ADMIN")
+                                        .requestMatchers(new AntPathRequestMatcher("api/v1/pedidos/MovimientosMonetariosFecha")).hasAuthority("ADMIN")
                                         .requestMatchers(PathRequest.toH2Console()).permitAll()
-
-
-                                        //.anyRequest().authenticated
                 )
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)) //H2
                 .sessionManagement(sessionManager-> sessionManager
